@@ -14,8 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !startsWith(github.head_ref, 'release-please--') }}
     strategy:
+      fail-fast: false
       matrix:
-        rust: [stable, "1.75"]
+        rust: [stable, "1.85"]
 
     steps:
       - uses: actions/checkout@v4
