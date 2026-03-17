@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/cyberapper/cadenza-client-rust/compare/v0.2.1...v0.3.0) (2026-03-17)
+
+
+### Features
+
+* add ws module re-exporting tokio-centrifuge SDK ([db79359](https://github.com/cyberapper/cadenza-client-rust/commit/db79359859ec281eba7814fb1896747216c84873))
+
 ## [0.2.1](https://github.com/cyberapper/cadenza-client-rust/compare/v0.2.0...v0.2.1) (2026-03-17)
 
 
