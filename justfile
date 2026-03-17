@@ -1,7 +1,7 @@
 # Cadenza Rust Client SDK — Build & Test
 #
 # Usage:
-#   just generate    Regenerate SDK from OpenAPI spec and format
+#   just openapi     Regenerate SDK from OpenAPI spec and format
 #   just build       Compile the library
 #   just test        Run tests
 #   just format      Format code
@@ -22,7 +22,7 @@ default:
     @just --list
 
 # Regenerate SDK from OpenAPI spec and format
-generate:
+openapi:
     #!/usr/bin/env bash
     set -eo pipefail
     echo "Generating Rust client SDK from OpenAPI spec..."
@@ -41,7 +41,7 @@ generate:
     rm -f .travis.yml git_push.sh
     echo "Generation complete!"
 
-alias g := generate
+alias o := openapi
 
 # Compile the library
 build:
