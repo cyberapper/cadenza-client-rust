@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/cyberapper/cadenza-client-rust/compare/v1.0.0...v1.0.1) (2026-03-17)
+
+
+### Bug Fixes
+
+* correct ws module doc-test ([#6](https://github.com/cyberapper/cadenza-client-rust/issues/6)) ([9b62a08](https://github.com/cyberapper/cadenza-client-rust/commit/9b62a08ba24571f4295bd73785cfe7bbc6a88a25))
+
 ## [1.0.0](https://github.com/cyberapper/cadenza-client-rust/compare/v0.3.1...v1.0.0) (2026-03-17)
 
 
