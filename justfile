@@ -1,6 +1,7 @@
 # Cadenza Rust Client SDK — Build & Test
 #
 # Usage:
+#   just generate    Regenerate SDK from OpenAPI spec and format
 #   just build       Compile the library
 #   just test        Run tests
 #   just format      Format code
@@ -11,10 +12,36 @@
 set quiet
 set shell := ["bash", "-eo", "pipefail", "-c"]
 
+# OpenAPI spec path (override with CADENZA_DOCS_PATH env var)
+docs_path := env("CADENZA_DOCS_PATH", justfile_directory() / "../cadenza-docs")
+spec      := docs_path / "openapi/openapi.v3.yaml"
+
 # Show available commands
 [private]
 default:
     @just --list
+
+# Regenerate SDK from OpenAPI spec and format
+generate:
+    #!/usr/bin/env bash
+    set -eo pipefail
+    echo "Generating Rust client SDK from OpenAPI spec..."
+    echo "Spec: {{spec}}"
+    openapi-generator generate \
+        -i "{{spec}}" \
+        -g rust \
+        -o . \
+        --package-name cadenza_client \
+        --git-user-id cyberapper \
+        --git-repo-id cadenza-client-rust \
+        --additional-properties=packageVersion=0.1.0,supportAsync=true,library=reqwest
+    echo "Formatting generated code..."
+    cargo fmt --all
+    echo "Cleaning up unwanted generated files..."
+    rm -f .travis.yml git_push.sh
+    echo "Generation complete!"
+
+alias g := generate
 
 # Compile the library
 build:

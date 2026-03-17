@@ -25,3 +25,7 @@ CLAUDE.local.md
 
 # Git worktrees
 .worktrees/
+
+# OpenAPI generator artifacts (not needed)
+.travis.yml
+git_push.sh

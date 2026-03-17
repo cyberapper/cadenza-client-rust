@@ -317,7 +317,6 @@ src/apis/trading_account_portfolio_api.rs
 src/apis/trading_account_subscription_api.rs
 src/apis/utility_api.rs
 src/apis/web_socket_api.rs
-src/lib.rs
 src/models/account_operation.rs
 src/models/account_type.rs
 src/models/auth_get_user_200_response.rs

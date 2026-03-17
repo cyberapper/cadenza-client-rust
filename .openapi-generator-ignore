@@ -20,3 +20,6 @@ src/lib.rs
 
 # Protect justfile
 justfile
+
+# Protect Cargo.lock
+Cargo.lock
