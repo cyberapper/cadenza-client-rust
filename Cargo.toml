@@ -1,6 +1,6 @@
 [package]
 name = "cadenza_client"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["OpenAPI Generator team and contributors"]
 description = "OpenAPI Specification for Algo724 Cadenza Fermata API  ## API Resources - <a href=\"/postman-collection.json\" download=\"cadenza-postman-collection.json\">Download Postman Collection</a>"
 license = "Proprietary"
