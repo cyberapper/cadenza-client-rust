@@ -1,0 +1,43 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "rust",
+      "versioning": "default",
+      "include-component-in-tag": false,
+      "tag-separator": "",
+      "include-v-in-tag": true,
+      "changelog-sections": [
+        {"type": "feat", "section": "Features"},
+        {"type": "fix", "section": "Bug Fixes"},
+        {"type": "refactor", "section": "Code Refactoring"},
+        {"type": "docs", "section": "Documentation"},
+        {"type": "chore", "section": "Miscellaneous"},
+        {"type": "perf", "section": "Performance Improvements"},
+        {"type": "revert", "section": "Reverts"},
+        {"type": "style", "section": "Styles"},
+        {"type": "test", "section": "Tests"},
+        {"type": "build", "section": "Build System"},
+        {"type": "ci", "section": "Continuous Integration"}
+      ],
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "pull-request-title-pattern": "chore${scope}: release ${version}",
+      "commit-search-depth": 500,
+      "release-search-depth": 400,
+      "extra-files": [],
+      "release-type-overrides": [
+        {"type": "refactor", "bump": "patch"},
+        {"type": "docs", "bump": "patch"},
+        {"type": "chore", "bump": "patch"},
+        {"type": "perf", "bump": "patch"},
+        {"type": "revert", "bump": "patch"},
+        {"type": "style", "bump": "patch"},
+        {"type": "test", "bump": "patch"},
+        {"type": "build", "bump": "patch"},
+        {"type": "ci", "bump": "patch"}
+      ]
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}

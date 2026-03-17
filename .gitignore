@@ -1,0 +1,27 @@
+# Generated output
+/target/
+debug/
+*.pdb
+
+# Cargo lock (library crate — consumers generate their own)
+# Uncomment the next line if you want to commit Cargo.lock for binary crates
+# Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code (local)
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
+# Git worktrees
+.worktrees/

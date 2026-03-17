@@ -1,0 +1,21 @@
+[package]
+name = "cadenza_client"
+version = "0.1.0"
+authors = ["OpenAPI Generator team and contributors"]
+description = "OpenAPI Specification for Algo724 Cadenza Fermata API  ## API Resources - <a href=\"/postman-collection.json\" download=\"cadenza-postman-collection.json\">Download Postman Collection</a>"
+license = "Proprietary"
+edition = "2021"
+
+[dependencies]
+serde = { version = "^1.0", features = ["derive"] }
+serde_with = { version = "^3.8", default-features = false, features = ["base64", "std", "macros"] }
+serde_json = "^1.0"
+serde_repr = "^0.1"
+url = "^2.5"
+uuid = { version = "^1.8", features = ["serde", "v4"] }
+reqwest = { version = "^0.13", default-features = false, features = ["json", "multipart", "query", "form"] }
+
+[features]
+default = ["native-tls"]
+native-tls = ["reqwest/native-tls"]
+rustls = ["reqwest/rustls"]
