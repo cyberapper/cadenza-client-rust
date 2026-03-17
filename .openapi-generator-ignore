@@ -14,3 +14,9 @@ CHANGELOG.md
 
 # Protect git config
 .gitignore
+
+# Protect crate root (clippy allows)
+src/lib.rs
+
+# Protect justfile
+justfile
