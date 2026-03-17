@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/cyberapper/cadenza-client-rust/compare/v0.3.0...v0.3.1) (2026-03-17)
+
+
+### Miscellaneous
+
+* add CLAUDE.md with project conventions and commands ([84999a8](https://github.com/cyberapper/cadenza-client-rust/commit/84999a8882d2a3594d02d3583fc156cff9dc27c9))
+
 ## [0.3.0](https://github.com/cyberapper/cadenza-client-rust/compare/v0.2.1...v0.3.0) (2026-03-17)
 
 
