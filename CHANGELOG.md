@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/cyberapper/cadenza-client-rust/compare/v0.3.1...v1.0.0) (2026-03-17)
+
+
+### Miscellaneous
+
+* release 1.0.0 ([817df6b](https://github.com/cyberapper/cadenza-client-rust/commit/817df6bc75889e34135c41210ac64a66a8e3572d))
+
 ## [0.3.1](https://github.com/cyberapper/cadenza-client-rust/compare/v0.3.0...v0.3.1) (2026-03-17)
 
 
