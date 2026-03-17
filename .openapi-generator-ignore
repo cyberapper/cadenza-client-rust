@@ -18,6 +18,9 @@ CHANGELOG.md
 # Protect crate root (clippy allows)
 src/lib.rs
 
+# Protect WebSocket module (hand-maintained re-exports)
+src/ws/**
+
 # Protect justfile
 justfile
 
