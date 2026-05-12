@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/cyberapper/cadenza-client-rust/compare/v1.0.1...v1.1.0) (2026-05-12)
+
+
+### Features
+
+* regenerate SDK for CDZ-457 market data + fermata ([#8](https://github.com/cyberapper/cadenza-client-rust/issues/8)) ([2cc4a4c](https://github.com/cyberapper/cadenza-client-rust/commit/2cc4a4c54a2810c0ad33b52bc34cadafaef43331))
+
 ## [1.0.1](https://github.com/cyberapper/cadenza-client-rust/compare/v1.0.0...v1.0.1) (2026-03-17)
 
 
