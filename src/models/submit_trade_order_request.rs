@@ -11,14 +11,15 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// SubmitTradeOrderRequest : Submit a trade order. For exchange venues, instrumentId is required. For Fermata venue, quoteId is required instead (the quote already contains all trade parameters).
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SubmitTradeOrderRequest {
     /// UUID string
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}
-    #[serde(rename = "instrumentId")]
-    pub instrument_id: String,
+    #[serde(rename = "instrumentId", skip_serializing_if = "Option::is_none")]
+    pub instrument_id: Option<String>,
     /// Idempotency key to prevent duplicate request processing
     #[serde(rename = "idempotencyKey", skip_serializing_if = "Option::is_none")]
     pub idempotency_key: Option<String>,
@@ -96,16 +97,16 @@ pub struct SubmitTradeOrderRequest {
 }
 
 impl SubmitTradeOrderRequest {
+    /// Submit a trade order. For exchange venues, instrumentId is required. For Fermata venue, quoteId is required instead (the quote already contains all trade parameters).
     pub fn new(
         trading_account_id: uuid::Uuid,
-        instrument_id: String,
         order_side: models::OrderSide,
         order_type: Option<models::OrderType>,
         quantity: String,
     ) -> SubmitTradeOrderRequest {
         SubmitTradeOrderRequest {
             trading_account_id,
-            instrument_id,
+            instrument_id: None,
             idempotency_key: None,
             client_order_id: None,
             order_side,

@@ -35,7 +35,7 @@ pub struct GetMarketOrderBook200Response {
     )]
     pub details: Option<Option<Box<models::BaseResponseDetails>>>,
     #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Box<models::Orderbook>>,
+    pub data: Option<Box<models::OrderBook>>,
 }
 
 impl GetMarketOrderBook200Response {

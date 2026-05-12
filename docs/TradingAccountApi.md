@@ -148,8 +148,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **trading_account_id** | Option<**uuid::Uuid**> | Trading account ID |  |
 **operation_type** | Option<[**OperationType**](OperationType.md)> | Operation type |  |
-**start_time** | Option<**i32**> | Start time (in unix milliseconds), of the created at field |  |
-**end_time** | Option<**i32**> | End time (in unix milliseconds), of the created at field |  |
+**start_time** | Option<**i64**> | Start time (in unix milliseconds), of the created at field |  |
+**end_time** | Option<**i64**> | End time (in unix milliseconds), of the created at field |  |
 **limit** | Option<**i32**> | Limit the number of returned results |  |[default to 50]
 **offset** | Option<**i32**> | Offset of the returned results |  |[default to 0]
 **cursor** | Option<**String**> |  |  |

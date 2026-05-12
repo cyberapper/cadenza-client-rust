@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **security_id** | Option<**String**> |  | [optional]
-**symbol** | Option<**String**> |  | [optional]
+**symbol** | Option<**String**> | Asset symbol (e.g. currency code, base asset) | [optional]
 **external_symbol** | Option<**String**> |  | [optional]
 **venue** | Option<[**models::Venue**](Venue.md)> |  | [optional]
 

@@ -114,13 +114,14 @@ impl From<&str> for ContentType {
 }
 
 pub mod authentication_api;
+pub mod fermata_api;
 pub mod market_api;
 pub mod market_subscription_api;
-pub mod trade_order_api;
 pub mod trading_account_api;
 pub mod trading_account_credential_api;
 pub mod trading_account_portfolio_api;
 pub mod trading_account_subscription_api;
+pub mod trading_api;
 pub mod utility_api;
 pub mod web_socket_api;
 

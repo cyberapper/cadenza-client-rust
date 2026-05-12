@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **trading_account_id** | **uuid::Uuid** | UUID string | 
-**instrument_id** | **String** | Instrument ID in format {VENUE}:{BASE}/{QUOTE} | 
+**instrument_id** | Option<**String**> | Instrument ID in format {VENUE}:{BASE}/{QUOTE} | [optional]
 **idempotency_key** | Option<**String**> | Idempotency key to prevent duplicate request processing | [optional]
 **client_order_id** | Option<**String**> | Client-provided order ID, used as idempotency key | [optional]
 **order_side** | [**models::OrderSide**](OrderSide.md) |  | 

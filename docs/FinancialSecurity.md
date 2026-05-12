@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **security_id** | Option<**String**> | Security ID, id in the format of venue:symbol | [optional]
-**symbol** | Option<**String**> | Symbol | [optional]
+**symbol** | Option<**String**> | Asset symbol (e.g. currency code, base asset) | [optional]
 **venue** | Option<[**models::Venue**](Venue.md)> |  | [optional]
 **security_type** | Option<[**models::SecurityType**](SecurityType.md)> |  | [optional]
 **precision** | Option<**i32**> | Precision | [optional]

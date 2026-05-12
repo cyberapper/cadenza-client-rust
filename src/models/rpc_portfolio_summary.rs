@@ -18,7 +18,7 @@ pub struct RpcPortfolioSummary {
     pub portfolio_summary_id: Option<uuid::Uuid>,
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
-    /// Summary currency
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "currency", skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
     #[serde(rename = "leverage", skip_serializing_if = "Option::is_none")]

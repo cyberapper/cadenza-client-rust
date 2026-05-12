@@ -21,7 +21,7 @@ pub struct RpcListKlinesParams {
     #[serde(rename = "symbols", skip_serializing_if = "Option::is_none")]
     pub symbols: Option<Vec<String>>,
     #[serde(rename = "interval", skip_serializing_if = "Option::is_none")]
-    pub interval: Option<String>,
+    pub interval: Option<models::KlineInterval>,
 }
 
 impl RpcListKlinesParams {

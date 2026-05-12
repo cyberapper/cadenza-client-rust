@@ -7,6 +7,7 @@
 #![allow(clippy::derivable_impls)]
 #![allow(clippy::empty_docs)]
 #![allow(clippy::uninlined_format_args)]
+#![allow(non_camel_case_types)]
 
 extern crate reqwest;
 extern crate serde;

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **channel** | **Channel** |  (enum: market.orderBook) | 
-**data** | [**models::Orderbook**](Orderbook.md) |  | 
+**data** | [**models::OrderBook**](OrderBook.md) |  | 
 **subscription_id** | **uuid::Uuid** | UUID string | 
 **timestamp** | **i64** | Unix timestamp in milliseconds | 
 

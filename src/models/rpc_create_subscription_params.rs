@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// RpcCreateSubscriptionParams : Request to create a market data subscription
+/// RpcCreateSubscriptionParams : Request to create a market data subscription.  `subscriptionType` selects the data stream — for unified market data surfaces, use `MARKET.SUBSCRIPTION.ORDERBOOK`, `MARKET.SUBSCRIPTION.TICKER`, or `MARKET.SUBSCRIPTION.KLINE`. `interval` is required when `subscriptionType: MARKET.SUBSCRIPTION.KLINE` and ignored otherwise.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcCreateSubscriptionParams {
     #[serde(rename = "venue")]
@@ -20,10 +20,12 @@ pub struct RpcCreateSubscriptionParams {
     pub instruments: Option<Vec<String>>,
     #[serde(rename = "subscriptionType")]
     pub subscription_type: models::SubscriptionType,
+    #[serde(rename = "interval", skip_serializing_if = "Option::is_none")]
+    pub interval: Option<models::KlineInterval>,
 }
 
 impl RpcCreateSubscriptionParams {
-    /// Request to create a market data subscription
+    /// Request to create a market data subscription.  `subscriptionType` selects the data stream — for unified market data surfaces, use `MARKET.SUBSCRIPTION.ORDERBOOK`, `MARKET.SUBSCRIPTION.TICKER`, or `MARKET.SUBSCRIPTION.KLINE`. `interval` is required when `subscriptionType: MARKET.SUBSCRIPTION.KLINE` and ignored otherwise.
     pub fn new(
         venue: models::Venue,
         subscription_type: models::SubscriptionType,
@@ -32,6 +34,7 @@ impl RpcCreateSubscriptionParams {
             venue,
             instruments: None,
             subscription_type,
+            interval: None,
         }
     }
 }

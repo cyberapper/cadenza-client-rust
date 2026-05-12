@@ -35,7 +35,7 @@ pub struct ListMarketOrderBooks200Response {
     )]
     pub details: Option<Option<Box<models::BaseResponseDetails>>>,
     #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<models::Orderbook>>,
+    pub data: Option<Vec<models::OrderBook>>,
 }
 
 impl ListMarketOrderBooks200Response {

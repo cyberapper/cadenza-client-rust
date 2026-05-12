@@ -15,12 +15,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcSaveTickersParams {
     #[serde(rename = "tickers")]
-    pub tickers: Vec<models::RpcTicker>,
+    pub tickers: Vec<models::Ticker>,
 }
 
 impl RpcSaveTickersParams {
     /// Request to save tickers
-    pub fn new(tickers: Vec<models::RpcTicker>) -> RpcSaveTickersParams {
+    pub fn new(tickers: Vec<models::Ticker>) -> RpcSaveTickersParams {
         RpcSaveTickersParams { tickers }
     }
 }

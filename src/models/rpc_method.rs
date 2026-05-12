@@ -193,6 +193,42 @@ pub enum RpcMethod {
     ResponseSecurityList,
     #[serde(rename = "event.security.updated")]
     EventSecurityUpdated,
+    #[serde(rename = "command.quote.rfq")]
+    CommandQuoteRfq,
+    #[serde(rename = "response.quote.rfq")]
+    ResponseQuoteRfq,
+    #[serde(rename = "command.fermata.dealer.link")]
+    CommandFermataDealerLink,
+    #[serde(rename = "response.fermata.dealer.link")]
+    ResponseFermataDealerLink,
+    #[serde(rename = "command.fermata.dealer.unlink")]
+    CommandFermataDealerUnlink,
+    #[serde(rename = "response.fermata.dealer.unlink")]
+    ResponseFermataDealerUnlink,
+    #[serde(rename = "command.fermata.wallet.create")]
+    CommandFermataWalletCreate,
+    #[serde(rename = "response.fermata.wallet.create")]
+    ResponseFermataWalletCreate,
+    #[serde(rename = "query.fermata.wallet.list")]
+    QueryFermataWalletList,
+    #[serde(rename = "response.fermata.wallet.list")]
+    ResponseFermataWalletList,
+    #[serde(rename = "command.fermata.wallet.transfer")]
+    CommandFermataWalletTransfer,
+    #[serde(rename = "response.fermata.wallet.transfer")]
+    ResponseFermataWalletTransfer,
+    #[serde(rename = "command.fermata.wallet.freeze")]
+    CommandFermataWalletFreeze,
+    #[serde(rename = "response.fermata.wallet.freeze")]
+    ResponseFermataWalletFreeze,
+    #[serde(rename = "command.fermata.wallet.unfreeze")]
+    CommandFermataWalletUnfreeze,
+    #[serde(rename = "response.fermata.wallet.unfreeze")]
+    ResponseFermataWalletUnfreeze,
+    #[serde(rename = "command.fermata.wallet.close")]
+    CommandFermataWalletClose,
+    #[serde(rename = "response.fermata.wallet.close")]
+    ResponseFermataWalletClose,
     #[serde(rename = "query.venue.list")]
     QueryVenueList,
     #[serde(rename = "response.venue.list")]
@@ -367,6 +403,24 @@ impl std::fmt::Display for RpcMethod {
             Self::QuerySecurityList => write!(f, "query.security.list"),
             Self::ResponseSecurityList => write!(f, "response.security.list"),
             Self::EventSecurityUpdated => write!(f, "event.security.updated"),
+            Self::CommandQuoteRfq => write!(f, "command.quote.rfq"),
+            Self::ResponseQuoteRfq => write!(f, "response.quote.rfq"),
+            Self::CommandFermataDealerLink => write!(f, "command.fermata.dealer.link"),
+            Self::ResponseFermataDealerLink => write!(f, "response.fermata.dealer.link"),
+            Self::CommandFermataDealerUnlink => write!(f, "command.fermata.dealer.unlink"),
+            Self::ResponseFermataDealerUnlink => write!(f, "response.fermata.dealer.unlink"),
+            Self::CommandFermataWalletCreate => write!(f, "command.fermata.wallet.create"),
+            Self::ResponseFermataWalletCreate => write!(f, "response.fermata.wallet.create"),
+            Self::QueryFermataWalletList => write!(f, "query.fermata.wallet.list"),
+            Self::ResponseFermataWalletList => write!(f, "response.fermata.wallet.list"),
+            Self::CommandFermataWalletTransfer => write!(f, "command.fermata.wallet.transfer"),
+            Self::ResponseFermataWalletTransfer => write!(f, "response.fermata.wallet.transfer"),
+            Self::CommandFermataWalletFreeze => write!(f, "command.fermata.wallet.freeze"),
+            Self::ResponseFermataWalletFreeze => write!(f, "response.fermata.wallet.freeze"),
+            Self::CommandFermataWalletUnfreeze => write!(f, "command.fermata.wallet.unfreeze"),
+            Self::ResponseFermataWalletUnfreeze => write!(f, "response.fermata.wallet.unfreeze"),
+            Self::CommandFermataWalletClose => write!(f, "command.fermata.wallet.close"),
+            Self::ResponseFermataWalletClose => write!(f, "response.fermata.wallet.close"),
             Self::QueryVenueList => write!(f, "query.venue.list"),
             Self::ResponseVenueList => write!(f, "response.venue.list"),
             Self::QueryOrderbookGet => write!(f, "query.orderbook.get"),

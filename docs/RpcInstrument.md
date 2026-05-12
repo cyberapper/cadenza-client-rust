@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**instrument_id** | Option<**String**> | Unique instrument identifier (format: VENUE:BASE/QUOTE) | [optional]
+**instrument_id** | Option<**String**> | Instrument ID in format {VENUE}:{BASE}/{QUOTE} | [optional]
 **venue** | Option<[**models::Venue**](Venue.md)> |  | [optional]
-**symbol** | Option<**String**> |  | [optional]
+**symbol** | Option<**String**> | Trading pair symbol in format {BASE}/{QUOTE} | [optional]
 **external_symbol** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
 **instrument_type** | Option<[**models::InstrumentType**](InstrumentType.md)> |  | [optional]

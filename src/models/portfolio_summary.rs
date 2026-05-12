@@ -16,7 +16,7 @@ pub struct PortfolioSummary {
     /// UUID string
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
-    /// Base currency for the portfolio summary
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "currency")]
     pub currency: String,
     /// Leverage multiplier
