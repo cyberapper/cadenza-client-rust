@@ -18,7 +18,7 @@ pub struct Instrument {
     pub instrument_id: String,
     #[serde(rename = "venue")]
     pub venue: models::Venue,
-    /// Human-readable symbol format
+    /// Trading pair symbol in format {BASE}/{QUOTE}
     #[serde(rename = "symbol")]
     pub symbol: String,
     /// Symbol format used by the exchange

@@ -16,7 +16,7 @@ pub struct FinancialSecurity {
     /// Security ID, id in the format of venue:symbol
     #[serde(rename = "securityId", skip_serializing_if = "Option::is_none")]
     pub security_id: Option<String>,
-    /// Symbol
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "symbol", skip_serializing_if = "Option::is_none")]
     pub symbol: Option<String>,
     #[serde(rename = "venue", skip_serializing_if = "Option::is_none")]

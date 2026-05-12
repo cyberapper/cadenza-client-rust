@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcOrderBookUpdatedEvent {
     #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Box<models::RpcOrderBook>>,
+    pub data: Option<Box<models::OrderBook>>,
 }
 
 impl RpcOrderBookUpdatedEvent {

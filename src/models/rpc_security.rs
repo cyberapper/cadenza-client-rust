@@ -16,6 +16,7 @@ use serde::{Deserialize, Serialize};
 pub struct RpcSecurity {
     #[serde(rename = "securityId", skip_serializing_if = "Option::is_none")]
     pub security_id: Option<String>,
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "symbol", skip_serializing_if = "Option::is_none")]
     pub symbol: Option<String>,
     #[serde(rename = "externalSymbol", skip_serializing_if = "Option::is_none")]

@@ -26,3 +26,6 @@ justfile
 
 # Protect Cargo.lock
 Cargo.lock
+
+# Protect Cargo.toml (version managed by release-please; hand-added deps like tokio-centrifuge)
+Cargo.toml

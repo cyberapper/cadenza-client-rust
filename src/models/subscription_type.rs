@@ -11,45 +11,53 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SubscriptionType : Type of data subscription
-/// Type of data subscription
+/// SubscriptionType : Type of data subscription. Format: `{LEVEL}.SUBSCRIPTION.{TYPE}`.  Market-level subscriptions stream public market data; trading-account-level subscriptions stream account-scoped data.  `TRADING_ACCOUNT.SUBSCRIPTION.TRADING_ACCOUNT` is deprecated — use `TRADING_ACCOUNT.SUBSCRIPTION.USER_DATA` instead (which combines `PORTFOLIO` and `EXECUTION_REPORT`).
+/// Type of data subscription. Format: `{LEVEL}.SUBSCRIPTION.{TYPE}`.  Market-level subscriptions stream public market data; trading-account-level subscriptions stream account-scoped data.  `TRADING_ACCOUNT.SUBSCRIPTION.TRADING_ACCOUNT` is deprecated — use `TRADING_ACCOUNT.SUBSCRIPTION.USER_DATA` instead (which combines `PORTFOLIO` and `EXECUTION_REPORT`).
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum SubscriptionType {
-    #[serde(rename = "ORDERBOOK")]
-    Orderbook,
-    #[serde(rename = "TRADE")]
-    Trade,
-    #[serde(rename = "TICKER")]
-    Ticker,
-    #[serde(rename = "KLINE")]
-    Kline,
-    #[serde(rename = "USER_DATA")]
-    UserData,
-    #[serde(rename = "PORTFOLIO")]
-    Portfolio,
-    #[serde(rename = "EXECUTION_REPORT")]
-    ExecutionReport,
-    #[serde(rename = "TRADING_ACCOUNT")]
-    TradingAccount,
+    #[serde(rename = "MARKET.SUBSCRIPTION.ORDERBOOK")]
+    MarketSubscriptionOrderbook,
+    #[serde(rename = "MARKET.SUBSCRIPTION.TRADE")]
+    MarketSubscriptionTrade,
+    #[serde(rename = "MARKET.SUBSCRIPTION.TICKER")]
+    MarketSubscriptionTicker,
+    #[serde(rename = "MARKET.SUBSCRIPTION.KLINE")]
+    MarketSubscriptionKline,
+    #[serde(rename = "TRADING_ACCOUNT.SUBSCRIPTION.USER_DATA")]
+    TradingAccountSubscriptionUserData,
+    #[serde(rename = "TRADING_ACCOUNT.SUBSCRIPTION.PORTFOLIO")]
+    TradingAccountSubscriptionPortfolio,
+    #[serde(rename = "TRADING_ACCOUNT.SUBSCRIPTION.EXECUTION_REPORT")]
+    TradingAccountSubscriptionExecutionReport,
+    #[serde(rename = "TRADING_ACCOUNT.SUBSCRIPTION.TRADING_ACCOUNT")]
+    TradingAccountSubscriptionTradingAccount,
 }
 
 impl std::fmt::Display for SubscriptionType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::Orderbook => write!(f, "ORDERBOOK"),
-            Self::Trade => write!(f, "TRADE"),
-            Self::Ticker => write!(f, "TICKER"),
-            Self::Kline => write!(f, "KLINE"),
-            Self::UserData => write!(f, "USER_DATA"),
-            Self::Portfolio => write!(f, "PORTFOLIO"),
-            Self::ExecutionReport => write!(f, "EXECUTION_REPORT"),
-            Self::TradingAccount => write!(f, "TRADING_ACCOUNT"),
+            Self::MarketSubscriptionOrderbook => write!(f, "MARKET.SUBSCRIPTION.ORDERBOOK"),
+            Self::MarketSubscriptionTrade => write!(f, "MARKET.SUBSCRIPTION.TRADE"),
+            Self::MarketSubscriptionTicker => write!(f, "MARKET.SUBSCRIPTION.TICKER"),
+            Self::MarketSubscriptionKline => write!(f, "MARKET.SUBSCRIPTION.KLINE"),
+            Self::TradingAccountSubscriptionUserData => {
+                write!(f, "TRADING_ACCOUNT.SUBSCRIPTION.USER_DATA")
+            }
+            Self::TradingAccountSubscriptionPortfolio => {
+                write!(f, "TRADING_ACCOUNT.SUBSCRIPTION.PORTFOLIO")
+            }
+            Self::TradingAccountSubscriptionExecutionReport => {
+                write!(f, "TRADING_ACCOUNT.SUBSCRIPTION.EXECUTION_REPORT")
+            }
+            Self::TradingAccountSubscriptionTradingAccount => {
+                write!(f, "TRADING_ACCOUNT.SUBSCRIPTION.TRADING_ACCOUNT")
+            }
         }
     }
 }
 
 impl Default for SubscriptionType {
     fn default() -> SubscriptionType {
-        Self::Orderbook
+        Self::MarketSubscriptionOrderbook
     }
 }

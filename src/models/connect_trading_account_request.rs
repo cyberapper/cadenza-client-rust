@@ -11,27 +11,36 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// ConnectTradingAccountRequest : Connect a trading account. For exchange venues, credentialIds and externalTradingAccountId are required. For Fermata venue, only venue is required (no credentials).
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ConnectTradingAccountRequest {
-    /// A list of credential IDs to be used to connect the trading account
-    #[serde(rename = "credentialIds")]
-    pub credential_ids: Vec<uuid::Uuid>,
-    /// External trading account ID
-    #[serde(rename = "externalTradingAccountId")]
-    pub external_trading_account_id: String,
+    #[serde(rename = "venue", skip_serializing_if = "Option::is_none")]
+    pub venue: Option<models::Venue>,
+    /// Credential IDs for exchange venues. Not required for Fermata.
+    #[serde(rename = "credentialIds", skip_serializing_if = "Option::is_none")]
+    pub credential_ids: Option<Vec<uuid::Uuid>>,
+    /// External trading account ID. Not required for Fermata.
+    #[serde(
+        rename = "externalTradingAccountId",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub external_trading_account_id: Option<String>,
+    /// UUID string
+    #[serde(rename = "dealerAccountId", skip_serializing_if = "Option::is_none")]
+    pub dealer_account_id: Option<uuid::Uuid>,
     /// Nickname of the trading account
     #[serde(rename = "nickname", skip_serializing_if = "Option::is_none")]
     pub nickname: Option<String>,
 }
 
 impl ConnectTradingAccountRequest {
-    pub fn new(
-        credential_ids: Vec<uuid::Uuid>,
-        external_trading_account_id: String,
-    ) -> ConnectTradingAccountRequest {
+    /// Connect a trading account. For exchange venues, credentialIds and externalTradingAccountId are required. For Fermata venue, only venue is required (no credentials).
+    pub fn new() -> ConnectTradingAccountRequest {
         ConnectTradingAccountRequest {
-            credential_ids,
-            external_trading_account_id,
+            venue: None,
+            credential_ids: None,
+            external_trading_account_id: None,
+            dealer_account_id: None,
             nickname: None,
         }
     }

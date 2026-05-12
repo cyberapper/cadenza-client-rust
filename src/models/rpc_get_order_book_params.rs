@@ -11,30 +11,22 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// RpcGetOrderBookParams : Request to get order book for an instrument
+/// RpcGetOrderBookParams : Request to get order book for an instrument.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcGetOrderBookParams {
-    /// Instrument ID (e.g., BINANCE:BTC/USDT)
+    /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}
     #[serde(rename = "instrumentId", skip_serializing_if = "Option::is_none")]
     pub instrument_id: Option<String>,
-    /// Venue (alternative to instrumentId)
-    #[serde(rename = "venue", skip_serializing_if = "Option::is_none")]
-    pub venue: Option<String>,
-    /// Symbol (alternative to instrumentId)
-    #[serde(rename = "symbol", skip_serializing_if = "Option::is_none")]
-    pub symbol: Option<String>,
     /// Order book depth
     #[serde(rename = "depth", skip_serializing_if = "Option::is_none")]
     pub depth: Option<i32>,
 }
 
 impl RpcGetOrderBookParams {
-    /// Request to get order book for an instrument
+    /// Request to get order book for an instrument.
     pub fn new() -> RpcGetOrderBookParams {
         RpcGetOrderBookParams {
             instrument_id: None,
-            venue: None,
-            symbol: None,
             depth: None,
         }
     }

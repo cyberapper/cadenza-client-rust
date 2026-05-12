@@ -16,7 +16,7 @@ pub struct WsMarketOrderBookUpdate {
     #[serde(rename = "channel")]
     pub channel: Channel,
     #[serde(rename = "data")]
-    pub data: Box<models::Orderbook>,
+    pub data: Box<models::OrderBook>,
     /// UUID string
     #[serde(rename = "subscriptionId")]
     pub subscription_id: uuid::Uuid,
@@ -28,7 +28,7 @@ pub struct WsMarketOrderBookUpdate {
 impl WsMarketOrderBookUpdate {
     pub fn new(
         channel: Channel,
-        data: models::Orderbook,
+        data: models::OrderBook,
         subscription_id: uuid::Uuid,
         timestamp: i64,
     ) -> WsMarketOrderBookUpdate {

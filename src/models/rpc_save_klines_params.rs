@@ -15,12 +15,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcSaveKlinesParams {
     #[serde(rename = "klines")]
-    pub klines: Vec<models::RpcKline>,
+    pub klines: Vec<models::Kline>,
 }
 
 impl RpcSaveKlinesParams {
     /// Request to save klines (candlestick data)
-    pub fn new(klines: Vec<models::RpcKline>) -> RpcSaveKlinesParams {
+    pub fn new(klines: Vec<models::Kline>) -> RpcSaveKlinesParams {
         RpcSaveKlinesParams { klines }
     }
 }

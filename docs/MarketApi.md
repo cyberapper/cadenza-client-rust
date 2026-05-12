@@ -8,10 +8,13 @@ Method | HTTP request | Description
 [**delete_market_security**](MarketApi.md#delete_market_security) | **DELETE** /api/v3/market/security/delete | Delete market security
 [**disable_market_instrument**](MarketApi.md#disable_market_instrument) | **POST** /api/v3/market/instrument/disable | Disable market instrument
 [**enable_market_instrument**](MarketApi.md#enable_market_instrument) | **POST** /api/v3/market/instrument/enable | Enable market instrument
+[**get_market_kline**](MarketApi.md#get_market_kline) | **GET** /api/v3/market/kline/get | Get market kline
 [**get_market_order_book**](MarketApi.md#get_market_order_book) | **GET** /api/v3/market/orderBook/get | Get market order book
+[**get_market_ticker**](MarketApi.md#get_market_ticker) | **GET** /api/v3/market/ticker/get | Get market ticker
 [**list_market_instruments**](MarketApi.md#list_market_instruments) | **GET** /api/v3/market/instrument/list | List market instruments
 [**list_market_order_books**](MarketApi.md#list_market_order_books) | **GET** /api/v3/market/orderBook/list | List market order books
 [**list_market_securities**](MarketApi.md#list_market_securities) | **GET** /api/v3/market/security/list | List market securities
+[**list_market_tickers**](MarketApi.md#list_market_tickers) | **GET** /api/v3/market/ticker/list | List market tickers
 [**list_market_venues**](MarketApi.md#list_market_venues) | **GET** /api/v3/market/venue/list | List market venues
 [**sync_market_instruments**](MarketApi.md#sync_market_instruments) | **POST** /api/v3/market/instrument/sync | Sync market instruments
 [**sync_market_securities**](MarketApi.md#sync_market_securities) | **POST** /api/v3/market/security/sync | Sync market securities
@@ -138,12 +141,46 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## get_market_kline
+
+> models::GetMarketKline200Response get_market_kline(interval, instrument_id, from, to, limit)
+Get market kline
+
+Get klines (candlestick data) for a specific instrument and interval. Returns a single `kline` object containing an array of OHLCV candles.  Returns `isClosed: true` for historical-only queries; `isClosed: false` only when the queried range includes the live (currently forming) bar. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**interval** | [**KlineInterval**](KlineInterval.md) | Kline interval (e.g. `1m`, `5m`, `1h`, `1d`) | [required] |
+**instrument_id** | Option<**String**> | Instrument ID |  |
+**from** | Option<**i64**> | Range start (Unix timestamp in milliseconds, inclusive) |  |
+**to** | Option<**i64**> | Range end (Unix timestamp in milliseconds, inclusive) |  |
+**limit** | Option<**i32**> | Limit the number of returned results |  |[default to 50]
+
+### Return type
+
+[**models::GetMarketKline200Response**](getMarketKline_200_response.md)
+
+### Authorization
+
+[SupabaseOAuth2BearerAuth](../README.md#SupabaseOAuth2BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## get_market_order_book
 
-> models::GetMarketOrderBook200Response get_market_order_book(instrument_id, venue, symbol, depth)
+> models::GetMarketOrderBook200Response get_market_order_book(instrument_id, depth)
 Get market order book
 
-Get order book for a specific instrument. instrumentId or venue+symbol
+Get order book for a specific instrument.
 
 ### Parameters
 
@@ -151,13 +188,41 @@ Get order book for a specific instrument. instrumentId or venue+symbol
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **instrument_id** | Option<**String**> | Instrument ID |  |
-**venue** | Option<[**Venue**](Venue.md)> | Exchange type |  |
-**symbol** | Option<**String**> | Instrument Symbol |  |
 **depth** | Option<**i32**> | Order book depth |  |[default to 10]
 
 ### Return type
 
 [**models::GetMarketOrderBook200Response**](getMarketOrderBook_200_response.md)
+
+### Authorization
+
+[SupabaseOAuth2BearerAuth](../README.md#SupabaseOAuth2BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_market_ticker
+
+> models::GetMarketTicker200Response get_market_ticker(instrument_id)
+Get market ticker
+
+Get ticker for a specific instrument.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**instrument_id** | Option<**String**> | Instrument ID |  |
+
+### Return type
+
+[**models::GetMarketTicker200Response**](getMarketTicker_200_response.md)
 
 ### Authorization
 
@@ -208,19 +273,17 @@ Name | Type | Description  | Required | Notes
 
 ## list_market_order_books
 
-> models::ListMarketOrderBooks200Response list_market_order_books(instrument_ids, venue, symbols, depth)
+> models::ListMarketOrderBooks200Response list_market_order_books(instrument_ids, depth)
 List market order books
 
-List order books for multiple instruments
+List order books for multiple instruments. Filter by `instrumentIds`.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**instrument_ids** | Option<[**Vec<String>**](String.md)> |  |  |
-**venue** | Option<[**Venue**](Venue.md)> | Exchange type |  |
-**symbols** | Option<[**Vec<String>**](String.md)> | Instrument Symbols array |  |
+**instrument_ids** | Option<[**Vec<String>**](String.md)> | Instrument ID array. Repeat the param to pass multiple values. |  |
 **depth** | Option<**i32**> | Order book depth |  |[default to 10]
 
 ### Return type
@@ -259,6 +322,39 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ListMarketSecurities200Response**](listMarketSecurities_200_response.md)
+
+### Authorization
+
+[SupabaseOAuth2BearerAuth](../README.md#SupabaseOAuth2BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_market_tickers
+
+> models::ListMarketTickers200Response list_market_tickers(instrument_ids, limit, offset, cursor)
+List market tickers
+
+List tickers for screening — filter by `instrumentIds`.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**instrument_ids** | Option<[**Vec<String>**](String.md)> | Instrument ID array. Repeat the param to pass multiple values. |  |
+**limit** | Option<**i32**> | Limit the number of returned results |  |[default to 50]
+**offset** | Option<**i32**> | Offset of the returned results |  |[default to 0]
+**cursor** | Option<**String**> |  |  |
+
+### Return type
+
+[**models::ListMarketTickers200Response**](listMarketTickers_200_response.md)
 
 ### Authorization
 

@@ -15,12 +15,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcSaveOrderBooksParams {
     #[serde(rename = "orderBooks")]
-    pub order_books: Vec<models::RpcOrderBook>,
+    pub order_books: Vec<models::OrderBook>,
 }
 
 impl RpcSaveOrderBooksParams {
     /// Request to save order books
-    pub fn new(order_books: Vec<models::RpcOrderBook>) -> RpcSaveOrderBooksParams {
+    pub fn new(order_books: Vec<models::OrderBook>) -> RpcSaveOrderBooksParams {
         RpcSaveOrderBooksParams { order_books }
     }
 }

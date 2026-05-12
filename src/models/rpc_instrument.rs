@@ -14,11 +14,12 @@ use serde::{Deserialize, Serialize};
 /// RpcInstrument : Financial instrument
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcInstrument {
-    /// Unique instrument identifier (format: VENUE:BASE/QUOTE)
+    /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}
     #[serde(rename = "instrumentId", skip_serializing_if = "Option::is_none")]
     pub instrument_id: Option<String>,
     #[serde(rename = "venue", skip_serializing_if = "Option::is_none")]
     pub venue: Option<models::Venue>,
+    /// Trading pair symbol in format {BASE}/{QUOTE}
     #[serde(rename = "symbol", skip_serializing_if = "Option::is_none")]
     pub symbol: Option<String>,
     #[serde(rename = "externalSymbol", skip_serializing_if = "Option::is_none")]

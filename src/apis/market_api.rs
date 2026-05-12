@@ -61,10 +61,34 @@ pub enum EnableMarketInstrumentError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_market_kline`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetMarketKlineError {
+    Status400(models::BaseResponse),
+    Status401(models::BaseResponse),
+    Status403(models::BaseResponse),
+    Status404(models::BaseResponse),
+    Status500(models::BaseResponse),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_market_order_book`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetMarketOrderBookError {
+    Status400(models::BaseResponse),
+    Status401(models::BaseResponse),
+    Status403(models::BaseResponse),
+    Status404(models::BaseResponse),
+    Status500(models::BaseResponse),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_market_ticker`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetMarketTickerError {
     Status400(models::BaseResponse),
     Status401(models::BaseResponse),
     Status403(models::BaseResponse),
@@ -101,6 +125,18 @@ pub enum ListMarketOrderBooksError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ListMarketSecuritiesError {
+    Status400(models::BaseResponse),
+    Status401(models::BaseResponse),
+    Status403(models::BaseResponse),
+    Status404(models::BaseResponse),
+    Status500(models::BaseResponse),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`list_market_tickers`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListMarketTickersError {
     Status400(models::BaseResponse),
     Status401(models::BaseResponse),
     Status403(models::BaseResponse),
@@ -354,18 +390,82 @@ pub async fn enable_market_instrument(
     }
 }
 
-/// Get order book for a specific instrument. instrumentId or venue+symbol
+/// Get klines (candlestick data) for a specific instrument and interval. Returns a single `kline` object containing an array of OHLCV candles.  Returns `isClosed: true` for historical-only queries; `isClosed: false` only when the queried range includes the live (currently forming) bar.
+pub async fn get_market_kline(
+    configuration: &configuration::Configuration,
+    interval: models::KlineInterval,
+    instrument_id: Option<&str>,
+    from: Option<i64>,
+    to: Option<i64>,
+    limit: Option<i32>,
+) -> Result<models::GetMarketKline200Response, Error<GetMarketKlineError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_interval = interval;
+    let p_query_instrument_id = instrument_id;
+    let p_query_from = from;
+    let p_query_to = to;
+    let p_query_limit = limit;
+
+    let uri_str = format!("{}/api/v3/market/kline/get", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_instrument_id {
+        req_builder = req_builder.query(&[("instrumentId", &param_value.to_string())]);
+    }
+    req_builder = req_builder.query(&[("interval", &p_query_interval.to_string())]);
+    if let Some(ref param_value) = p_query_from {
+        req_builder = req_builder.query(&[("from", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_to {
+        req_builder = req_builder.query(&[("to", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_limit {
+        req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetMarketKline200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetMarketKline200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetMarketKlineError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Get order book for a specific instrument.
 pub async fn get_market_order_book(
     configuration: &configuration::Configuration,
     instrument_id: Option<&str>,
-    venue: Option<models::Venue>,
-    symbol: Option<&str>,
     depth: Option<i32>,
 ) -> Result<models::GetMarketOrderBook200Response, Error<GetMarketOrderBookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_instrument_id = instrument_id;
-    let p_query_venue = venue;
-    let p_query_symbol = symbol;
     let p_query_depth = depth;
 
     let uri_str = format!("{}/api/v3/market/orderBook/get", configuration.base_path);
@@ -373,12 +473,6 @@ pub async fn get_market_order_book(
 
     if let Some(ref param_value) = p_query_instrument_id {
         req_builder = req_builder.query(&[("instrumentId", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_venue {
-        req_builder = req_builder.query(&[("venue", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_symbol {
-        req_builder = req_builder.query(&[("symbol", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_depth {
         req_builder = req_builder.query(&[("depth", &param_value.to_string())]);
@@ -411,6 +505,56 @@ pub async fn get_market_order_book(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetMarketOrderBookError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Get ticker for a specific instrument.
+pub async fn get_market_ticker(
+    configuration: &configuration::Configuration,
+    instrument_id: Option<&str>,
+) -> Result<models::GetMarketTicker200Response, Error<GetMarketTickerError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_instrument_id = instrument_id;
+
+    let uri_str = format!("{}/api/v3/market/ticker/get", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_instrument_id {
+        req_builder = req_builder.query(&[("instrumentId", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetMarketTicker200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetMarketTicker200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetMarketTickerError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
@@ -510,18 +654,14 @@ pub async fn list_market_instruments(
     }
 }
 
-/// List order books for multiple instruments
+/// List order books for multiple instruments. Filter by `instrumentIds`.
 pub async fn list_market_order_books(
     configuration: &configuration::Configuration,
     instrument_ids: Option<Vec<String>>,
-    venue: Option<models::Venue>,
-    symbols: Option<Vec<String>>,
     depth: Option<i32>,
 ) -> Result<models::ListMarketOrderBooks200Response, Error<ListMarketOrderBooksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_instrument_ids = instrument_ids;
-    let p_query_venue = venue;
-    let p_query_symbols = symbols;
     let p_query_depth = depth;
 
     let uri_str = format!("{}/api/v3/market/orderBook/list", configuration.base_path);
@@ -537,28 +677,6 @@ pub async fn list_market_order_books(
             ),
             _ => req_builder.query(&[(
                 "instrumentIds",
-                &param_value
-                    .into_iter()
-                    .map(|p| p.to_string())
-                    .collect::<Vec<String>>()
-                    .join(",")
-                    .to_string(),
-            )]),
-        };
-    }
-    if let Some(ref param_value) = p_query_venue {
-        req_builder = req_builder.query(&[("venue", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_symbols {
-        req_builder = match "multi" {
-            "multi" => req_builder.query(
-                &param_value
-                    .into_iter()
-                    .map(|p| ("symbols".to_owned(), p.to_string()))
-                    .collect::<Vec<(std::string::String, std::string::String)>>(),
-            ),
-            _ => req_builder.query(&[(
-                "symbols",
                 &param_value
                     .into_iter()
                     .map(|p| p.to_string())
@@ -664,6 +782,87 @@ pub async fn list_market_securities(
     } else {
         let content = resp.text().await?;
         let entity: Option<ListMarketSecuritiesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// List tickers for screening — filter by `instrumentIds`.
+pub async fn list_market_tickers(
+    configuration: &configuration::Configuration,
+    instrument_ids: Option<Vec<String>>,
+    limit: Option<i32>,
+    offset: Option<i32>,
+    cursor: Option<&str>,
+) -> Result<models::ListMarketTickers200Response, Error<ListMarketTickersError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_instrument_ids = instrument_ids;
+    let p_query_limit = limit;
+    let p_query_offset = offset;
+    let p_query_cursor = cursor;
+
+    let uri_str = format!("{}/api/v3/market/ticker/list", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_instrument_ids {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(
+                &param_value
+                    .into_iter()
+                    .map(|p| ("instrumentIds".to_owned(), p.to_string()))
+                    .collect::<Vec<(std::string::String, std::string::String)>>(),
+            ),
+            _ => req_builder.query(&[(
+                "instrumentIds",
+                &param_value
+                    .into_iter()
+                    .map(|p| p.to_string())
+                    .collect::<Vec<String>>()
+                    .join(",")
+                    .to_string(),
+            )]),
+        };
+    }
+    if let Some(ref param_value) = p_query_limit {
+        req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_offset {
+        req_builder = req_builder.query(&[("offset", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_cursor {
+        req_builder = req_builder.query(&[("cursor", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ListMarketTickers200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ListMarketTickers200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListMarketTickersError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

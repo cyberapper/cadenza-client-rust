@@ -61,6 +61,8 @@ pub enum Venue {
     B2C2Sandbox,
     #[serde(rename = "IBKR_PAPER")]
     IbkrPaper,
+    #[serde(rename = "FERMATA")]
+    Fermata,
     #[serde(rename = "MOCK")]
     Mock,
     #[serde(rename = "PAPER")]
@@ -93,6 +95,7 @@ impl std::fmt::Display for Venue {
             Self::BinanceSandbox => write!(f, "BINANCE_SANDBOX"),
             Self::B2C2Sandbox => write!(f, "B2C2_SANDBOX"),
             Self::IbkrPaper => write!(f, "IBKR_PAPER"),
+            Self::Fermata => write!(f, "FERMATA"),
             Self::Mock => write!(f, "MOCK"),
             Self::Paper => write!(f, "PAPER"),
         }

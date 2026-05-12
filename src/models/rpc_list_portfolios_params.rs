@@ -20,7 +20,7 @@ pub struct RpcListPortfoliosParams {
     /// Filter by venue
     #[serde(rename = "venue", skip_serializing_if = "Option::is_none")]
     pub venue: Option<String>,
-    /// Filter by currency
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "currency", skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
     #[serde(rename = "pagination", skip_serializing_if = "Option::is_none")]
