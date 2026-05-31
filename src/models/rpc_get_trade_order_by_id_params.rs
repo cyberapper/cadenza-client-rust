@@ -14,6 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcGetTradeOrderByIdParams : Request to get a trade order by ID
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcGetTradeOrderByIdParams {
+    /// Internal trade order ID (UUID)
     #[serde(rename = "tradeOrderId")]
     pub trade_order_id: uuid::Uuid,
 }

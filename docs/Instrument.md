@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **description** | Option<**String**> | Symbol description, human readable description of the instrument | [optional]
 **instrument_type** | [**models::InstrumentType**](InstrumentType.md) |  | 
 **status** | [**models::InstrumentStatus**](InstrumentStatus.md) |  | 
-**base_asset** | **String** |  | 
-**quote_asset** | **String** |  | 
+**base_asset** | **String** | Asset symbol (e.g. currency code, base asset) | 
+**quote_asset** | **String** | Asset symbol (e.g. currency code, base asset) | 
 **base_security_type** | Option<[**models::SecurityType**](SecurityType.md)> |  | [optional]
 **quote_security_type** | Option<[**models::SecurityType**](SecurityType.md)> |  | [optional]
 **base_precision** | **i32** | Base asset precision | 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **is_iceberg_allowed** | Option<**bool**> | Whether iceberg orders are allowed | [optional]
 **iceberg_min_quantity** | Option<**String**> | Decimal value as string to preserve precision | [optional]
 **delivery_date** | Option<**i64**> | Unix timestamp in milliseconds | [optional]
-**delivery_date_time** | Option<**String**> | Delivery date in ISO 8601 format for derivatives | [optional]
+**delivery_date_time** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Delivery date in ISO 8601 format for derivatives | [optional]
 **exercise_style** | Option<**ExerciseStyle**> | Exercise style for options (enum: EUROPEAN, AMERICAN) | [optional]
 **strike_price** | Option<**String**> | Decimal value as string to preserve precision | [optional]
 

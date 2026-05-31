@@ -34,10 +34,10 @@ pub struct Quote {
     /// UUID string
     #[serde(rename = "traderAccountId", skip_serializing_if = "Option::is_none")]
     pub trader_account_id: Option<uuid::Uuid>,
-    /// Base asset being traded
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "baseAsset")]
     pub base_asset: String,
-    /// Quote asset (payment currency)
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "quoteAsset")]
     pub quote_asset: String,
     #[serde(rename = "orderSide")]
@@ -63,19 +63,19 @@ pub struct Quote {
     pub created_at: i64,
     /// Quote creation timestamp in ISO 8601 format
     #[serde(rename = "createdAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub created_at_date_time: Option<String>,
+    pub created_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<i64>,
     /// Last update timestamp in ISO 8601 format
     #[serde(rename = "updatedAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub updated_at_date_time: Option<String>,
+    pub updated_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "expireAt")]
     pub expire_at: i64,
     /// Quote expiration timestamp in ISO 8601 format
     #[serde(rename = "expireAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub expire_at_date_time: Option<String>,
+    pub expire_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// UUID string
     #[serde(rename = "pricingProfileId", skip_serializing_if = "Option::is_none")]
     pub pricing_profile_id: Option<uuid::Uuid>,

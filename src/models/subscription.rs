@@ -18,7 +18,7 @@ pub struct Subscription {
     pub subscription_id: uuid::Uuid,
     #[serde(rename = "venue")]
     pub venue: models::Venue,
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}
@@ -33,13 +33,13 @@ pub struct Subscription {
     pub created_at: i64,
     /// Creation timestamp in ISO 8601 format
     #[serde(rename = "createdAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub created_at_date_time: Option<String>,
+    pub created_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "updatedAt")]
     pub updated_at: i64,
     /// Last update timestamp in ISO 8601 format
     #[serde(rename = "updatedAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub updated_at_date_time: Option<String>,
+    pub updated_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "lastEventTimestamp", skip_serializing_if = "Option::is_none")]
     pub last_event_timestamp: Option<i64>,

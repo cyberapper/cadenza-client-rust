@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 /// SubmitTradeOrderRequest : Submit a trade order. For exchange venues, instrumentId is required. For Fermata venue, quoteId is required instead (the quote already contains all trade parameters).
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SubmitTradeOrderRequest {
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}
@@ -30,6 +30,8 @@ pub struct SubmitTradeOrderRequest {
     pub order_side: models::OrderSide,
     #[serde(rename = "orderType", deserialize_with = "Option::deserialize")]
     pub order_type: Option<models::OrderType>,
+    #[serde(rename = "contingencyType", skip_serializing_if = "Option::is_none")]
+    pub contingency_type: Option<models::ContingencyType>,
     /// Decimal value as string to preserve precision
     #[serde(rename = "limitPrice", skip_serializing_if = "Option::is_none")]
     pub limit_price: Option<String>,
@@ -111,6 +113,7 @@ impl SubmitTradeOrderRequest {
             client_order_id: None,
             order_side,
             order_type,
+            contingency_type: None,
             limit_price: None,
             stop_price: None,
             quantity,

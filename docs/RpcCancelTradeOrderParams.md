@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trade_order_id** | Option<**uuid::Uuid**> | Trade order ID to cancel | [optional]
-**trading_account_id** | **uuid::Uuid** | Trading account ID | 
+**trade_order_id** | Option<**uuid::Uuid**> | Internal trade order ID (UUID) | [optional]
+**trading_account_id** | **uuid::Uuid** | Internal trading account ID (UUID) | 
 **client_order_id** | Option<**String**> | Client order ID (alternative to tradeOrderId) | [optional]
 **external_order_id** | Option<**String**> | External order ID from venue | [optional]
 

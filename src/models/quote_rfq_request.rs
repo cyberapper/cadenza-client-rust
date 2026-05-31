@@ -23,10 +23,10 @@ pub struct QuoteRfqRequest {
     /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}
     #[serde(rename = "instrumentId", skip_serializing_if = "Option::is_none")]
     pub instrument_id: Option<String>,
-    /// Base asset to trade. Used with quoteAsset for symbol-based venues.
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "baseAsset", skip_serializing_if = "Option::is_none")]
     pub base_asset: Option<String>,
-    /// Quote asset (payment currency). Used with baseAsset for symbol-based venues.
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "quoteAsset", skip_serializing_if = "Option::is_none")]
     pub quote_asset: Option<String>,
     #[serde(rename = "orderSide")]
@@ -45,7 +45,7 @@ pub struct QuoteRfqRequest {
     pub ttl: Option<i32>,
     /// Absolute expiry timestamp (ISO 8601). Mutually exclusive with ttl. If neither ttl nor expireAt is set, defaults to 10 seconds from quote creation.
     #[serde(rename = "expireAt", skip_serializing_if = "Option::is_none")]
-    pub expire_at: Option<String>,
+    pub expire_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// UUID string
     #[serde(rename = "pricingProfileId", skip_serializing_if = "Option::is_none")]
     pub pricing_profile_id: Option<uuid::Uuid>,

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**models::HealthStatus**](HealthStatus.md) |  | 
 **timestamp** | **i64** | Health check timestamp in milliseconds | 
-**iso_date_time** | Option<**String**> | Health check timestamp in ISO 8601 format | [optional]
+**iso_date_time** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Health check timestamp in ISO 8601 format | [optional]
 **version** | **String** | API version | 
 **checks** | Option<[**models::Health200ResponseChecks**](Health200ResponseChecks.md)> |  | [optional]
 

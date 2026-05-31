@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **portfolio_summary_id** | Option<**uuid::Uuid**> |  | [optional]
-**trading_account_id** | Option<**uuid::Uuid**> |  | [optional]
+**trading_account_id** | Option<**uuid::Uuid**> | Internal trading account ID (UUID) | [optional]
 **currency** | Option<**String**> | Asset symbol (e.g. currency code, base asset) | [optional]
 **leverage** | Option<**i32**> |  | [optional]
 **equity** | Option<**String**> | Total equity | [optional]

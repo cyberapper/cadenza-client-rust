@@ -116,6 +116,7 @@ pub async fn list_trade_orders(
     configuration: &configuration::Configuration,
     trade_order_id: Option<&str>,
     order_list_id: Option<&str>,
+    external_order_list_id: Option<&str>,
     order_status: Option<models::OrderStatus>,
     trading_account_id: Option<&str>,
     instrument_id: Option<&str>,
@@ -129,6 +130,7 @@ pub async fn list_trade_orders(
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_trade_order_id = trade_order_id;
     let p_query_order_list_id = order_list_id;
+    let p_query_external_order_list_id = external_order_list_id;
     let p_query_order_status = order_status;
     let p_query_trading_account_id = trading_account_id;
     let p_query_instrument_id = instrument_id;
@@ -147,6 +149,9 @@ pub async fn list_trade_orders(
     }
     if let Some(ref param_value) = p_query_order_list_id {
         req_builder = req_builder.query(&[("orderListId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_external_order_list_id {
+        req_builder = req_builder.query(&[("externalOrderListId", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order_status {
         req_builder = req_builder.query(&[("orderStatus", &param_value.to_string())]);

@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trading_account_id** | **uuid::Uuid** | UUID string | 
+**trading_account_id** | **uuid::Uuid** | Internal trading account ID (UUID) | 
 **instrument_id** | Option<**String**> | Instrument ID in format {VENUE}:{BASE}/{QUOTE} | [optional]
 **idempotency_key** | Option<**String**> | Idempotency key to prevent duplicate request processing | [optional]
 **client_order_id** | Option<**String**> | Client-provided order ID, used as idempotency key | [optional]
 **order_side** | [**models::OrderSide**](OrderSide.md) |  | 
 **order_type** | Option<[**models::OrderType**](OrderType.md)> |  | 
+**contingency_type** | Option<[**models::ContingencyType**](ContingencyType.md)> |  | [optional]
 **limit_price** | Option<**String**> | Decimal value as string to preserve precision | [optional]
 **stop_price** | Option<**String**> | Decimal value as string to preserve precision | [optional]
 **quantity** | **String** | Decimal value as string to preserve precision | 

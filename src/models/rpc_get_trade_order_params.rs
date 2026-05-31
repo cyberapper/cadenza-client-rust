@@ -14,10 +14,10 @@ use serde::{Deserialize, Serialize};
 /// RpcGetTradeOrderParams : Request to get a specific trade order
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcGetTradeOrderParams {
-    /// Trade order ID
+    /// Internal trade order ID (UUID)
     #[serde(rename = "tradeOrderId", skip_serializing_if = "Option::is_none")]
     pub trade_order_id: Option<uuid::Uuid>,
-    /// Trading account ID
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// Client order ID

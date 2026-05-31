@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trading_account_id** | **uuid::Uuid** |  | 
+**trading_account_id** | **uuid::Uuid** | Internal trading account ID (UUID) | 
 **venue** | [**models::Venue**](Venue.md) |  | 
 **credential_type** | Option<[**models::CredentialType**](CredentialType.md)> |  | 
 **api_key** | Option<**String**> |  | [optional]

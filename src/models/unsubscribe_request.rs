@@ -16,7 +16,7 @@ pub struct UnsubscribeRequest {
     /// UUID string
     #[serde(rename = "subscriptionId", skip_serializing_if = "Option::is_none")]
     pub subscription_id: Option<uuid::Uuid>,
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}

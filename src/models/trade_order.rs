@@ -13,16 +13,21 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TradeOrder {
-    /// UUID string
+    /// Internal trade order ID (UUID)
     #[serde(rename = "tradeOrderId")]
     pub trade_order_id: uuid::Uuid,
-    /// Exchange order list ID linking sibling orders in OCO/OTO/OTOCO order lists. Present on all orders in a list.
+    /// Internal order list ID (UUID) linking sibling orders in OCO/OTO/OTOCO order lists
     #[serde(rename = "orderListId", skip_serializing_if = "Option::is_none")]
-    pub order_list_id: Option<String>,
-    /// Order list contingency type. Present on all orders in a list.
+    pub order_list_id: Option<uuid::Uuid>,
+    /// Exchange-assigned order list ID linking sibling OCO/OTO/OTOCO legs
+    #[serde(
+        rename = "externalOrderListId",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub external_order_list_id: Option<String>,
     #[serde(rename = "contingencyType", skip_serializing_if = "Option::is_none")]
-    pub contingency_type: Option<ContingencyType>,
-    /// UUID string
+    pub contingency_type: Option<models::ContingencyType>,
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     #[serde(rename = "venue")]
@@ -36,10 +41,10 @@ pub struct TradeOrder {
     /// UUID string
     #[serde(rename = "quoteId", skip_serializing_if = "Option::is_none")]
     pub quote_id: Option<uuid::Uuid>,
-    /// Base asset in the trading pair
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "baseAsset")]
     pub base_asset: String,
-    /// Quote asset in the trading pair
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "quoteAsset")]
     pub quote_asset: String,
     #[serde(rename = "orderSide")]
@@ -118,25 +123,25 @@ pub struct TradeOrder {
     pub created_at: i64,
     /// Creation timestamp in ISO 8601 format
     #[serde(rename = "createdAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub created_at_date_time: Option<String>,
+    pub created_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "updatedAt")]
     pub updated_at: i64,
     /// Last update timestamp in ISO 8601 format
     #[serde(rename = "updatedAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub updated_at_date_time: Option<String>,
+    pub updated_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "expireAt", skip_serializing_if = "Option::is_none")]
     pub expire_at: Option<i64>,
     /// Expiration timestamp in ISO 8601 format
     #[serde(rename = "expireAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub expire_at_date_time: Option<String>,
+    pub expire_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "canceledAt", skip_serializing_if = "Option::is_none")]
     pub canceled_at: Option<i64>,
     /// Cancellation timestamp in ISO 8601 format
     #[serde(rename = "canceledAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub canceled_at_date_time: Option<String>,
+    pub canceled_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl TradeOrder {
@@ -163,6 +168,7 @@ impl TradeOrder {
         TradeOrder {
             trade_order_id,
             order_list_id: None,
+            external_order_list_id: None,
             contingency_type: None,
             trading_account_id,
             venue,
@@ -202,21 +208,5 @@ impl TradeOrder {
             canceled_at: None,
             canceled_at_date_time: None,
         }
-    }
-}
-/// Order list contingency type. Present on all orders in a list.
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum ContingencyType {
-    #[serde(rename = "OCO")]
-    Oco,
-    #[serde(rename = "OTO")]
-    Oto,
-    #[serde(rename = "OTOCO")]
-    Otoco,
-}
-
-impl Default for ContingencyType {
-    fn default() -> ContingencyType {
-        Self::Oco
     }
 }

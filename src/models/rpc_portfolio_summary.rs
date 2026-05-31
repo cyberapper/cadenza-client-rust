@@ -16,6 +16,7 @@ use serde::{Deserialize, Serialize};
 pub struct RpcPortfolioSummary {
     #[serde(rename = "portfolioSummaryId", skip_serializing_if = "Option::is_none")]
     pub portfolio_summary_id: Option<uuid::Uuid>,
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// Asset symbol (e.g. currency code, base asset)

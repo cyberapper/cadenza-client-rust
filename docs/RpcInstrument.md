@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **description** | Option<**String**> |  | [optional]
 **instrument_type** | Option<[**models::InstrumentType**](InstrumentType.md)> |  | [optional]
 **status** | Option<[**models::InstrumentStatus**](InstrumentStatus.md)> |  | [optional]
-**base_asset** | Option<**String**> |  | [optional]
-**quote_asset** | Option<**String**> |  | [optional]
+**base_asset** | Option<**String**> | Asset symbol (e.g. currency code, base asset) | [optional]
+**quote_asset** | Option<**String**> | Asset symbol (e.g. currency code, base asset) | [optional]
 **base_security_type** | Option<[**models::SecurityType**](SecurityType.md)> |  | [optional]
 **quote_security_type** | Option<[**models::SecurityType**](SecurityType.md)> |  | [optional]
 **base_precision** | Option<**i32**> |  | [optional]
@@ -28,8 +28,8 @@ Name | Type | Description | Notes
 **fee** | Option<**String**> | Decimal value as string | [optional]
 **is_iceberg_allowed** | Option<**bool**> |  | [optional]
 **contract_size** | Option<**String**> | Decimal value as string | [optional]
-**created_at** | Option<**String**> |  | [optional]
-**updated_at** | Option<**String**> |  | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

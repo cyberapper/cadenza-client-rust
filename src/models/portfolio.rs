@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Portfolio {
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     #[serde(rename = "venue")]
@@ -29,7 +29,7 @@ pub struct Portfolio {
     pub updated_at: i64,
     /// Last update timestamp in ISO 8601 format
     #[serde(rename = "updatedAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub updated_at_date_time: Option<String>,
+    pub updated_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl Portfolio {

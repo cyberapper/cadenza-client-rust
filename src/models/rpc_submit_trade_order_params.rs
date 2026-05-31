@@ -16,7 +16,7 @@ use serde::{Deserialize, Serialize};
 pub struct RpcSubmitTradeOrderParams {
     #[serde(rename = "tradeOrder")]
     pub trade_order: Box<models::RpcTradeOrder>,
-    /// Trading account ID to place order on
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     /// Idempotency key to prevent duplicate orders

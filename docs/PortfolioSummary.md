@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trading_account_id** | **uuid::Uuid** | UUID string | 
+**trading_account_id** | **uuid::Uuid** | Internal trading account ID (UUID) | 
 **currency** | **String** | Asset symbol (e.g. currency code, base asset) | 
 **leverage** | Option<**i32**> | Leverage multiplier | 
 **equity** | **String** | Decimal value as string to preserve precision | 

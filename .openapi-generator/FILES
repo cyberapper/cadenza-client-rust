@@ -1,5 +1,4 @@
 .travis.yml
-Cargo.toml
 README.md
 docs/AccountOperation.md
 docs/AccountType.md
@@ -26,6 +25,7 @@ docs/CancelTradeOrderRequest.md
 docs/CollateralMode.md
 docs/ConnectTradingAccount200Response.md
 docs/ConnectTradingAccountRequest.md
+docs/ContingencyType.md
 docs/CreateTradingAccountCredential200Response.md
 docs/CreateTradingAccountCredentialRequest.md
 docs/CredentialStatus.md
@@ -370,6 +370,7 @@ src/models/cancel_trade_order_request.rs
 src/models/collateral_mode.rs
 src/models/connect_trading_account_200_response.rs
 src/models/connect_trading_account_request.rs
+src/models/contingency_type.rs
 src/models/create_trading_account_credential_200_response.rs
 src/models/create_trading_account_credential_request.rs
 src/models/credential_status.rs

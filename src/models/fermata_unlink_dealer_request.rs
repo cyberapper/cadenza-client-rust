@@ -17,7 +17,7 @@ pub struct FermataUnlinkDealerRequest {
     /// UUID string
     #[serde(rename = "dealerAccountId")]
     pub dealer_account_id: uuid::Uuid,
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
 }

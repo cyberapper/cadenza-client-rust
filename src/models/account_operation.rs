@@ -16,7 +16,7 @@ pub struct AccountOperation {
     /// UUID string
     #[serde(rename = "operationId")]
     pub operation_id: uuid::Uuid,
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     #[serde(rename = "operationType")]
@@ -28,7 +28,7 @@ pub struct AccountOperation {
     pub created_at: i64,
     /// Creation timestamp in ISO 8601 format
     #[serde(rename = "createdAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub created_at_date_time: Option<String>,
+    pub created_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl AccountOperation {

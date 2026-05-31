@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trading_account_id** | **uuid::Uuid** |  | 
+**trading_account_id** | **uuid::Uuid** | Internal trading account ID (UUID) | 
 **subscription_type** | Option<[**models::SubscriptionType**](SubscriptionType.md)> |  | [optional]
 **status** | Option<[**models::SubscriptionStatus**](SubscriptionStatus.md)> |  | [optional]
 **pagination** | Option<[**models::RpcPagination**](RpcPagination.md)> |  | [optional]

@@ -14,10 +14,10 @@ use serde::{Deserialize, Serialize};
 /// RpcCancelTradeOrderParams : Request to cancel an existing trade order
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcCancelTradeOrderParams {
-    /// Trade order ID to cancel
+    /// Internal trade order ID (UUID)
     #[serde(rename = "tradeOrderId", skip_serializing_if = "Option::is_none")]
     pub trade_order_id: Option<uuid::Uuid>,
-    /// Trading account ID
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     /// Client order ID (alternative to tradeOrderId)

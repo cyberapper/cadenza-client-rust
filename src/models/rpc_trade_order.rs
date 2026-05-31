@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcTradeOrder : Trade order model
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcTradeOrder {
-    /// Unique trade order ID
+    /// Internal trade order ID (UUID)
     #[serde(rename = "tradeOrderId", skip_serializing_if = "Option::is_none")]
     pub trade_order_id: Option<uuid::Uuid>,
     /// Client-assigned order ID
@@ -35,7 +35,7 @@ pub struct RpcTradeOrder {
     /// Trading venue
     #[serde(rename = "venue", skip_serializing_if = "Option::is_none")]
     pub venue: Option<String>,
-    /// Trading account ID
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// External account ID at venue
@@ -50,10 +50,10 @@ pub struct RpcTradeOrder {
     /// Symbol at external venue
     #[serde(rename = "externalSymbol", skip_serializing_if = "Option::is_none")]
     pub external_symbol: Option<String>,
-    /// Base asset
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "baseAsset", skip_serializing_if = "Option::is_none")]
     pub base_asset: Option<String>,
-    /// Quote asset
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "quoteAsset", skip_serializing_if = "Option::is_none")]
     pub quote_asset: Option<String>,
     #[serde(
@@ -124,19 +124,19 @@ pub struct RpcTradeOrder {
     pub reject_reason: Option<String>,
     /// Order creation time
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Last update time
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Order expiration time (for GTD)
     #[serde(rename = "expireAt", skip_serializing_if = "Option::is_none")]
-    pub expire_at: Option<String>,
+    pub expire_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Time of last execution
     #[serde(rename = "lastExecutionAt", skip_serializing_if = "Option::is_none")]
-    pub last_execution_at: Option<String>,
+    pub last_execution_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Time of cancellation
     #[serde(rename = "canceledAt", skip_serializing_if = "Option::is_none")]
-    pub canceled_at: Option<String>,
+    pub canceled_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl RpcTradeOrder {

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **venue** | Option<[**models::Venue**](Venue.md)> |  | [optional]
 **subscription_type** | Option<[**models::SubscriptionType**](SubscriptionType.md)> |  | [optional]
 **status** | Option<[**models::SubscriptionStatus**](SubscriptionStatus.md)> |  | [optional]
-**created_at** | Option<**String**> |  | [optional]
-**updated_at** | Option<**String**> |  | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

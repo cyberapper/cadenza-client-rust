@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcGetPortfolioParams : Request to get portfolio for a trading account
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcGetPortfolioParams {
-    /// Trading account ID
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
 }

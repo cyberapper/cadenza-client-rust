@@ -14,6 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcEnableTradingAccountParams : Request to enable a trading account
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcEnableTradingAccountParams {
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
 }

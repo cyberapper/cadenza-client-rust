@@ -43,7 +43,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_trade_orders
 
-> models::ListTradeOrders200Response list_trade_orders(trade_order_id, order_list_id, order_status, trading_account_id, instrument_id, start_time, end_time, limit, offset, cursor, ascending)
+> models::ListTradeOrders200Response list_trade_orders(trade_order_id, order_list_id, external_order_list_id, order_status, trading_account_id, instrument_id, start_time, end_time, limit, offset, cursor, ascending)
 List trade orders
 
 List trade orders with filtering options
@@ -54,7 +54,8 @@ List trade orders with filtering options
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **trade_order_id** | Option<**uuid::Uuid**> | Trade order ID |  |
-**order_list_id** | Option<**String**> | Filter by order list ID to retrieve child orders of an OCO/OTO/OTOCO parent |  |
+**order_list_id** | Option<**uuid::Uuid**> | Filter by internal order list ID (UUID) to retrieve child orders of an OCO/OTO/OTOCO parent |  |
+**external_order_list_id** | Option<**String**> | Filter by exchange-assigned order list ID to retrieve child orders of an OCO/OTO/OTOCO parent |  |
 **order_status** | Option<[**OrderStatus**](OrderStatus.md)> | Order status |  |
 **trading_account_id** | Option<**uuid::Uuid**> | Trading account ID |  |
 **instrument_id** | Option<**String**> | Instrument ID |  |

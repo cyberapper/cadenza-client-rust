@@ -19,10 +19,11 @@ pub struct RpcTradingAccountOperationHistory {
         skip_serializing_if = "Option::is_none"
     )]
     pub trading_account_history_id: Option<uuid::Uuid>,
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     #[serde(rename = "timestamp", skip_serializing_if = "Option::is_none")]
-    pub timestamp: Option<String>,
+    pub timestamp: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "operationType", skip_serializing_if = "Option::is_none")]
     pub operation_type: Option<models::TradingAccountOperationType>,
     #[serde(rename = "operateBy", skip_serializing_if = "Option::is_none")]
