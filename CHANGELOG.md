@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/cyberapper/cadenza-client-rust/compare/v1.1.0...v1.1.1) (2026-06-01)
+
+
+### Miscellaneous
+
+* regenerate client SDK from updated OpenAPI spec ([#10](https://github.com/cyberapper/cadenza-client-rust/issues/10)) ([4a2e590](https://github.com/cyberapper/cadenza-client-rust/commit/4a2e5909c3a1dafb4df2cc90a23a2b6f9c27192c))
+
 ## [1.1.0](https://github.com/cyberapper/cadenza-client-rust/compare/v1.0.1...v1.1.0) (2026-05-12)
 
 
