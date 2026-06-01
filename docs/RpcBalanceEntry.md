@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **balance_id** | Option<**uuid::Uuid**> |  | [optional]
 **external_balance_id** | Option<**String**> |  | [optional]
-**trading_account_id** | Option<**uuid::Uuid**> |  | [optional]
+**trading_account_id** | Option<**uuid::Uuid**> | Internal trading account ID (UUID) | [optional]
 **security_symbol** | Option<**String**> | Asset symbol | [optional]
 **security_type** | Option<[**models::SecurityType**](SecurityType.md)> |  | [optional]
 **status** | Option<[**models::BalanceStatus**](BalanceStatus.md)> |  | [optional]
@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **cross_margin** | Option<**String**> |  | [optional]
 **isolated_margin** | Option<**String**> |  | [optional]
 **margin_ratio** | Option<**String**> |  | [optional]
-**created_at** | Option<**String**> |  | [optional]
-**updated_at** | Option<**String**> |  | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

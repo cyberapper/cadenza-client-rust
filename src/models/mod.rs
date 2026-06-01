@@ -46,6 +46,8 @@ pub mod connect_trading_account_200_response;
 pub use self::connect_trading_account_200_response::ConnectTradingAccount200Response;
 pub mod connect_trading_account_request;
 pub use self::connect_trading_account_request::ConnectTradingAccountRequest;
+pub mod contingency_type;
+pub use self::contingency_type::ContingencyType;
 pub mod create_trading_account_credential_200_response;
 pub use self::create_trading_account_credential_200_response::CreateTradingAccountCredential200Response;
 pub mod create_trading_account_credential_request;

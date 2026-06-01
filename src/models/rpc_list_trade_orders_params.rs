@@ -14,10 +14,10 @@ use serde::{Deserialize, Serialize};
 /// RpcListTradeOrdersParams : Request to list trade orders with filters
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcListTradeOrdersParams {
-    /// Filter by specific trade order ID
+    /// Internal trade order ID (UUID)
     #[serde(rename = "tradeOrderId", skip_serializing_if = "Option::is_none")]
     pub trade_order_id: Option<uuid::Uuid>,
-    /// Filter by trading account ID
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// Filter by instrument ID (e.g., BINANCE:BTC/USDT)
@@ -41,10 +41,10 @@ pub struct RpcListTradeOrdersParams {
     pub status: Option<Option<models::OrderStatus>>,
     /// Filter orders created after this time
     #[serde(rename = "startTime", skip_serializing_if = "Option::is_none")]
-    pub start_time: Option<String>,
+    pub start_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Filter orders created before this time
     #[serde(rename = "endTime", skip_serializing_if = "Option::is_none")]
-    pub end_time: Option<String>,
+    pub end_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "pagination", skip_serializing_if = "Option::is_none")]
     pub pagination: Option<Box<models::RpcPagination>>,
 }

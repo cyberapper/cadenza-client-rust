@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**models::HealthStatus**](HealthStatus.md) |  | 
-**timestamp** | **String** | Timestamp in ISO 8601 format (RFC3339). This is the native format used by Go's time.Time. | 
+**timestamp** | **chrono::DateTime<chrono::FixedOffset>** | Timestamp in ISO 8601 format (RFC3339). This is the native format used by Go's time.Time. | 
 **version** | **String** | API version | 
 **checks** | Option<[**models::Health200ResponseChecks**](Health200ResponseChecks.md)> |  | [optional]
 

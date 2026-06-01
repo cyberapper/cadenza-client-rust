@@ -30,8 +30,10 @@ pub struct RpcInstrument {
     pub instrument_type: Option<models::InstrumentType>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::InstrumentStatus>,
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "baseAsset", skip_serializing_if = "Option::is_none")]
     pub base_asset: Option<String>,
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "quoteAsset", skip_serializing_if = "Option::is_none")]
     pub quote_asset: Option<String>,
     #[serde(rename = "baseSecurityType", skip_serializing_if = "Option::is_none")]
@@ -73,9 +75,9 @@ pub struct RpcInstrument {
     #[serde(rename = "contractSize", skip_serializing_if = "Option::is_none")]
     pub contract_size: Option<String>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl RpcInstrument {

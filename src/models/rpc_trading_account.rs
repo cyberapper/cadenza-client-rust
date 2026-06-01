@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcTradingAccount : Trading account model
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcTradingAccount {
-    /// Unique trading account ID
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// User ID
@@ -68,9 +68,9 @@ pub struct RpcTradingAccount {
     #[serde(rename = "config", skip_serializing_if = "Option::is_none")]
     pub config: Option<Box<models::RpcTradingAccountConfig>>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl RpcTradingAccount {

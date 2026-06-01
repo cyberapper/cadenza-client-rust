@@ -18,7 +18,7 @@ pub struct RpcHealthCheck {
     pub status: models::HealthStatus,
     /// Timestamp in ISO 8601 format (RFC3339). This is the native format used by Go's time.Time.
     #[serde(rename = "timestamp")]
-    pub timestamp: String,
+    pub timestamp: chrono::DateTime<chrono::FixedOffset>,
     /// API version
     #[serde(rename = "version")]
     pub version: String,
@@ -28,7 +28,11 @@ pub struct RpcHealthCheck {
 
 impl RpcHealthCheck {
     /// Health check data
-    pub fn new(status: models::HealthStatus, timestamp: String, version: String) -> RpcHealthCheck {
+    pub fn new(
+        status: models::HealthStatus,
+        timestamp: chrono::DateTime<chrono::FixedOffset>,
+        version: String,
+    ) -> RpcHealthCheck {
         RpcHealthCheck {
             status,
             timestamp,

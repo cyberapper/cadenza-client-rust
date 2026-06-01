@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trade_order_id** | Option<**uuid::Uuid**> | Trade order ID | [optional]
-**trading_account_id** | Option<**uuid::Uuid**> | Trading account ID | [optional]
+**trade_order_id** | Option<**uuid::Uuid**> | Internal trade order ID (UUID) | [optional]
+**trading_account_id** | Option<**uuid::Uuid**> | Internal trading account ID (UUID) | [optional]
 **client_order_id** | Option<**String**> | Client order ID | [optional]
 **external_order_id** | Option<**String**> | External order ID | [optional]
 

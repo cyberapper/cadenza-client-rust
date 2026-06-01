@@ -13,10 +13,10 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CancelTradeOrderRequest {
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
-    /// UUID string
+    /// Internal trade order ID (UUID)
     #[serde(rename = "tradeOrderId")]
     pub trade_order_id: uuid::Uuid,
 }

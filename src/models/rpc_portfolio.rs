@@ -14,6 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcPortfolio : Portfolio model containing balances and positions
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcPortfolio {
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     #[serde(rename = "accountInfo", skip_serializing_if = "Option::is_none")]
@@ -27,7 +28,7 @@ pub struct RpcPortfolio {
     #[serde(rename = "updateMode", skip_serializing_if = "Option::is_none")]
     pub update_mode: Option<models::UpdateMode>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl RpcPortfolio {

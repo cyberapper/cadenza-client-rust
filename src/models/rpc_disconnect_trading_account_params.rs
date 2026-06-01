@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcDisconnectTradingAccountParams : Request to disconnect a trading account
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcDisconnectTradingAccountParams {
-    /// Trading account ID to disconnect
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
 }

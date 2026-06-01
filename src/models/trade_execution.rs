@@ -43,7 +43,7 @@ pub struct TradeExecution {
     pub executed_at: i64,
     /// Execution timestamp in ISO 8601 format
     #[serde(rename = "executedAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub executed_at_date_time: Option<String>,
+    pub executed_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl TradeExecution {

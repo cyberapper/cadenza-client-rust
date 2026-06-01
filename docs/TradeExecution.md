@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **executed_cost** | **String** | Decimal value as string to preserve precision | 
 **fees** | Option<[**Vec<models::SecurityQuantity>**](SecurityQuantity.md)> | Fees charged for this execution | [optional]
 **executed_at** | **i64** | Unix timestamp in milliseconds | 
-**executed_at_date_time** | Option<**String**> | Execution timestamp in ISO 8601 format | [optional]
+**executed_at_date_time** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Execution timestamp in ISO 8601 format | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

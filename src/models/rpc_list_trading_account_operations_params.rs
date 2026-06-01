@@ -14,6 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcListTradingAccountOperationsParams : Request to list trading account operations
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcListTradingAccountOperationsParams {
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     #[serde(rename = "pagination", skip_serializing_if = "Option::is_none")]

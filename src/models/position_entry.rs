@@ -27,7 +27,7 @@ pub struct PositionEntry {
         skip_serializing_if = "Option::is_none"
     )]
     pub external_position_id: Option<Option<String>>,
-    /// UUID string
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     /// Instrument ID in format {VENUE}:{BASE}/{QUOTE}
@@ -62,13 +62,13 @@ pub struct PositionEntry {
     pub created_at: i64,
     /// Creation timestamp in ISO 8601 format
     #[serde(rename = "createdAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub created_at_date_time: Option<String>,
+    pub created_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "updatedAt")]
     pub updated_at: i64,
     /// Last update timestamp in ISO 8601 format
     #[serde(rename = "updatedAtDateTime", skip_serializing_if = "Option::is_none")]
-    pub updated_at_date_time: Option<String>,
+    pub updated_at_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "closedAt", skip_serializing_if = "Option::is_none")]
     pub closed_at: Option<i64>,
@@ -79,7 +79,7 @@ pub struct PositionEntry {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub closed_at_date_time: Option<Option<String>>,
+    pub closed_at_date_time: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
 }
 
 impl PositionEntry {

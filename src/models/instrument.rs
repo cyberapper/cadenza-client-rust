@@ -31,8 +31,10 @@ pub struct Instrument {
     pub instrument_type: models::InstrumentType,
     #[serde(rename = "status")]
     pub status: models::InstrumentStatus,
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "baseAsset")]
     pub base_asset: String,
+    /// Asset symbol (e.g. currency code, base asset)
     #[serde(rename = "quoteAsset")]
     pub quote_asset: String,
     #[serde(rename = "baseSecurityType", skip_serializing_if = "Option::is_none")]
@@ -102,7 +104,7 @@ pub struct Instrument {
     pub delivery_date: Option<i64>,
     /// Delivery date in ISO 8601 format for derivatives
     #[serde(rename = "deliveryDateTime", skip_serializing_if = "Option::is_none")]
-    pub delivery_date_time: Option<String>,
+    pub delivery_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Exercise style for options
     #[serde(rename = "exerciseStyle", skip_serializing_if = "Option::is_none")]
     pub exercise_style: Option<ExerciseStyle>,

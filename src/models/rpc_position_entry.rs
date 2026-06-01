@@ -18,6 +18,7 @@ pub struct RpcPositionEntry {
     pub position_id: Option<uuid::Uuid>,
     #[serde(rename = "externalPositionId", skip_serializing_if = "Option::is_none")]
     pub external_position_id: Option<String>,
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     #[serde(rename = "securitySymbol", skip_serializing_if = "Option::is_none")]
@@ -45,9 +46,9 @@ pub struct RpcPositionEntry {
     #[serde(rename = "realizedPnl", skip_serializing_if = "Option::is_none")]
     pub realized_pnl: Option<String>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl RpcPositionEntry {

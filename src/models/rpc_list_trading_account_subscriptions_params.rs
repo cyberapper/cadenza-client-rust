@@ -14,6 +14,7 @@ use serde::{Deserialize, Serialize};
 /// RpcListTradingAccountSubscriptionsParams : Request to list trading account subscriptions
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RpcListTradingAccountSubscriptionsParams {
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
     #[serde(rename = "subscriptionType", skip_serializing_if = "Option::is_none")]

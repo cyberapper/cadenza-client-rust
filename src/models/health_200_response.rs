@@ -20,7 +20,7 @@ pub struct Health200Response {
     pub timestamp: i64,
     /// Health check timestamp in ISO 8601 format
     #[serde(rename = "isoDateTime", skip_serializing_if = "Option::is_none")]
-    pub iso_date_time: Option<String>,
+    pub iso_date_time: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// API version
     #[serde(rename = "version")]
     pub version: String,

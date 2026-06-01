@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **status** | Option<[**models::CredentialStatus**](CredentialStatus.md)> |  | [optional]
 **venue** | Option<[**models::Venue**](Venue.md)> |  | [optional]
 **api_key** | Option<**String**> | API key (only in responses where withSecret=true) | [optional]
-**created_at** | Option<**String**> |  | [optional]
-**updated_at** | Option<**String**> |  | [optional]
-**revoked_at** | Option<**String**> |  | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**revoked_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **with_info** | Option<**bool**> | Whether metadata fields are populated | [optional]
 **with_secret** | Option<**bool**> | Whether secret fields are populated | [optional]
 

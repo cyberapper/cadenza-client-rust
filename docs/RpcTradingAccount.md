@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trading_account_id** | Option<**uuid::Uuid**> | Unique trading account ID | [optional]
+**trading_account_id** | Option<**uuid::Uuid**> | Internal trading account ID (UUID) | [optional]
 **user_id** | Option<**uuid::Uuid**> | User ID | [optional]
 **tenant_id** | Option<**String**> | Tenant identifier for multi-tenancy | [optional]
 **nickname** | Option<**String**> | Account nickname | [optional]
@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **margin_mode** | Option<[**models::MarginMode**](MarginMode.md)> |  | [optional]
 **credentials** | Option<[**Vec<models::RpcTradingAccountCredential>**](RpcTradingAccountCredential.md)> | Account credentials | [optional]
 **config** | Option<[**models::RpcTradingAccountConfig**](RpcTradingAccountConfig.md)> |  | [optional]
-**created_at** | Option<**String**> |  | [optional]
-**updated_at** | Option<**String**> |  | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

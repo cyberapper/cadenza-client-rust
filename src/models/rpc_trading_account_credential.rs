@@ -33,11 +33,11 @@ pub struct RpcTradingAccountCredential {
     #[serde(rename = "apiKey", skip_serializing_if = "Option::is_none")]
     pub api_key: Option<String>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "revokedAt", skip_serializing_if = "Option::is_none")]
-    pub revoked_at: Option<String>,
+    pub revoked_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Whether metadata fields are populated
     #[serde(rename = "withInfo", skip_serializing_if = "Option::is_none")]
     pub with_info: Option<bool>,

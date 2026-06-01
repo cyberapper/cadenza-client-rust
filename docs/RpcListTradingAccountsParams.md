@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trading_account_id** | Option<**uuid::Uuid**> | Filter by specific account ID | [optional]
+**trading_account_id** | Option<**uuid::Uuid**> | Internal trading account ID (UUID) | [optional]
 **venue** | Option<**String**> | Filter by venue | [optional]
 **status** | Option<[**models::TradingAccountStatus**](TradingAccountStatus.md)> |  | [optional]
 **pagination** | Option<[**models::RpcPagination**](RpcPagination.md)> |  | [optional]

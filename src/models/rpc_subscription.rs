@@ -25,9 +25,9 @@ pub struct RpcSubscription {
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::SubscriptionStatus>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl RpcSubscription {

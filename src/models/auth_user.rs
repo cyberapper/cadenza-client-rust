@@ -35,7 +35,7 @@ pub struct AuthUser {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub email_confirmed_at: Option<Option<String>>,
+    pub email_confirmed_at: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     /// Phone confirmation timestamp
     #[serde(
         rename = "phoneConfirmedAt",
@@ -43,7 +43,7 @@ pub struct AuthUser {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub phone_confirmed_at: Option<Option<String>>,
+    pub phone_confirmed_at: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     /// Last sign in timestamp
     #[serde(
         rename = "lastSignInAt",
@@ -51,16 +51,16 @@ pub struct AuthUser {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub last_sign_in_at: Option<Option<String>>,
+    pub last_sign_in_at: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     /// User role
     #[serde(rename = "role", skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
     /// Account creation timestamp
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Account last update timestamp
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "appMetadata", skip_serializing_if = "Option::is_none")]
     pub app_metadata: Option<Box<models::AuthUserAppMetadata>>,
     /// User-defined metadata

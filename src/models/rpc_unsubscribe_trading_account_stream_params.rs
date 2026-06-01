@@ -16,6 +16,7 @@ use serde::{Deserialize, Serialize};
 pub struct RpcUnsubscribeTradingAccountStreamParams {
     #[serde(rename = "subscriptionId", skip_serializing_if = "Option::is_none")]
     pub subscription_id: Option<uuid::Uuid>,
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId")]
     pub trading_account_id: uuid::Uuid,
 }

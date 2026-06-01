@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trade_order_id** | Option<**uuid::Uuid**> | Unique trade order ID | [optional]
+**trade_order_id** | Option<**uuid::Uuid**> | Internal trade order ID (UUID) | [optional]
 **client_order_id** | Option<**String**> | Client-assigned order ID | [optional]
 **original_client_order_id** | Option<**String**> | Original client order ID (for cancel/replace) | [optional]
 **external_order_id** | Option<**String**> | Order ID from external venue | [optional]
 **idempotency_key** | Option<**String**> | Idempotency key | [optional]
 **venue** | Option<**String**> | Trading venue | [optional]
-**trading_account_id** | Option<**uuid::Uuid**> | Trading account ID | [optional]
+**trading_account_id** | Option<**uuid::Uuid**> | Internal trading account ID (UUID) | [optional]
 **external_trading_account_id** | Option<**String**> | External account ID at venue | [optional]
 **instrument_id** | Option<**String**> | Instrument ID (VENUE:BASE/QUOTE) | [optional]
 **external_symbol** | Option<**String**> | Symbol at external venue | [optional]
-**base_asset** | Option<**String**> | Base asset | [optional]
-**quote_asset** | Option<**String**> | Quote asset | [optional]
+**base_asset** | Option<**String**> | Asset symbol (e.g. currency code, base asset) | [optional]
+**quote_asset** | Option<**String**> | Asset symbol (e.g. currency code, base asset) | [optional]
 **order_type** | Option<[**models::OrderType**](OrderType.md)> |  | [optional]
 **order_side** | Option<[**models::OrderSide**](OrderSide.md)> |  | [optional]
 **quantity_type** | Option<[**models::QuantityType**](QuantityType.md)> |  | [optional]
@@ -34,11 +34,11 @@ Name | Type | Description | Notes
 **fees** | Option<[**Vec<models::RpcSecurityQuantity>**](RpcSecurityQuantity.md)> | Fees charged | [optional]
 **cancel_reason** | Option<**String**> | Reason for cancellation | [optional]
 **reject_reason** | Option<**String**> | Reason for rejection | [optional]
-**created_at** | Option<**String**> | Order creation time | [optional]
-**updated_at** | Option<**String**> | Last update time | [optional]
-**expire_at** | Option<**String**> | Order expiration time (for GTD) | [optional]
-**last_execution_at** | Option<**String**> | Time of last execution | [optional]
-**canceled_at** | Option<**String**> | Time of cancellation | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Order creation time | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Last update time | [optional]
+**expire_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Order expiration time (for GTD) | [optional]
+**last_execution_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Time of last execution | [optional]
+**canceled_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Time of cancellation | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

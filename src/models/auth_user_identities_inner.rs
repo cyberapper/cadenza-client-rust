@@ -32,13 +32,13 @@ pub struct AuthUserIdentitiesInner {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub last_sign_in_at: Option<Option<String>>,
+    pub last_sign_in_at: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     /// Identity creation timestamp
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Identity last update timestamp
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl AuthUserIdentitiesInner {

@@ -18,6 +18,7 @@ pub struct RpcBalanceEntry {
     pub balance_id: Option<uuid::Uuid>,
     #[serde(rename = "externalBalanceId", skip_serializing_if = "Option::is_none")]
     pub external_balance_id: Option<String>,
+    /// Internal trading account ID (UUID)
     #[serde(rename = "tradingAccountId", skip_serializing_if = "Option::is_none")]
     pub trading_account_id: Option<uuid::Uuid>,
     /// Asset symbol
@@ -61,9 +62,9 @@ pub struct RpcBalanceEntry {
     #[serde(rename = "marginRatio", skip_serializing_if = "Option::is_none")]
     pub margin_ratio: Option<String>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 impl RpcBalanceEntry {
