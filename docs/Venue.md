@@ -14,6 +14,7 @@
 | Deribit | DERIBIT |
 | Bitfinex | BITFINEX |
 | Okx | OKX |
+| Hyperliquid | HYPERLIQUID |
 | BinanceUat | BINANCE_UAT |
 | B2C2Uat | B2C2_UAT |
 | WintermuteUat | WINTERMUTE_UAT |
@@ -24,6 +25,7 @@
 | DeribitUat | DERIBIT_UAT |
 | BitfinexUat | BITFINEX_UAT |
 | OkxUat | OKX_UAT |
+| HyperliquidUat | HYPERLIQUID_UAT |
 | BinanceSandbox | BINANCE_SANDBOX |
 | B2C2Sandbox | B2C2_SANDBOX |
 | IbkrPaper | IBKR_PAPER |

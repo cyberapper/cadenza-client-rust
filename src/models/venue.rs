@@ -35,6 +35,8 @@ pub enum Venue {
     Bitfinex,
     #[serde(rename = "OKX")]
     Okx,
+    #[serde(rename = "HYPERLIQUID")]
+    Hyperliquid,
     #[serde(rename = "BINANCE_UAT")]
     BinanceUat,
     #[serde(rename = "B2C2_UAT")]
@@ -55,6 +57,8 @@ pub enum Venue {
     BitfinexUat,
     #[serde(rename = "OKX_UAT")]
     OkxUat,
+    #[serde(rename = "HYPERLIQUID_UAT")]
+    HyperliquidUat,
     #[serde(rename = "BINANCE_SANDBOX")]
     BinanceSandbox,
     #[serde(rename = "B2C2_SANDBOX")]
@@ -82,6 +86,7 @@ impl std::fmt::Display for Venue {
             Self::Deribit => write!(f, "DERIBIT"),
             Self::Bitfinex => write!(f, "BITFINEX"),
             Self::Okx => write!(f, "OKX"),
+            Self::Hyperliquid => write!(f, "HYPERLIQUID"),
             Self::BinanceUat => write!(f, "BINANCE_UAT"),
             Self::B2C2Uat => write!(f, "B2C2_UAT"),
             Self::WintermuteUat => write!(f, "WINTERMUTE_UAT"),
@@ -92,6 +97,7 @@ impl std::fmt::Display for Venue {
             Self::DeribitUat => write!(f, "DERIBIT_UAT"),
             Self::BitfinexUat => write!(f, "BITFINEX_UAT"),
             Self::OkxUat => write!(f, "OKX_UAT"),
+            Self::HyperliquidUat => write!(f, "HYPERLIQUID_UAT"),
             Self::BinanceSandbox => write!(f, "BINANCE_SANDBOX"),
             Self::B2C2Sandbox => write!(f, "B2C2_SANDBOX"),
             Self::IbkrPaper => write!(f, "IBKR_PAPER"),
