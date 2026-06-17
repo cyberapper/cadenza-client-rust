@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/cyberapper/cadenza-client-rust/compare/v1.1.1...v1.1.2) (2026-06-17)
+
+
+### Miscellaneous
+
+* regenerate Rust client SDK for HYPERLIQUID venue ([#12](https://github.com/cyberapper/cadenza-client-rust/issues/12)) ([56052f3](https://github.com/cyberapper/cadenza-client-rust/commit/56052f32c06ebf484fa66a3c06dbf9934f6ffa03))
+
 ## [1.1.1](https://github.com/cyberapper/cadenza-client-rust/compare/v1.1.0...v1.1.1) (2026-06-01)
 
 
