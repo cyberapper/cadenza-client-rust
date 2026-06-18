@@ -5,6 +5,10 @@
 | Name | Value |
 |---- | -----|
 | Spot | SPOT |
+| Futures | FUTURES |
+| Perpetual | PERPETUAL |
+| Option | OPTION |
+| Cfd | CFD |
 | Contract | CONTRACT |
 
 

@@ -13,6 +13,7 @@
 | Option | OPTION |
 | Futures | FUTURES |
 | Perpetual | PERPETUAL |
+| Cfd | CFD |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

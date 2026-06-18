@@ -11,12 +11,20 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// InstrumentType : Type of financial instrument
-/// Type of financial instrument
+/// InstrumentType : Trading mechanism of an instrument — how the two securities are exchanged and traded. Unlike `securityType` (which classifies the asset class), this focuses on the instrument's trading mechanism.  - `SPOT`: direct asset exchange, both balances change - `FUTURES`: fixed-expiry contract settled at maturity - `PERPETUAL`: perpetual contract with no expiry (funding rate) - `OPTION`: right to buy/sell at strike price - `CFD`: contract for difference, cash-settled - `CONTRACT`: **deprecated** — legacy umbrella for derivative contracts,   superseded by the more specific `FUTURES` / `PERPETUAL`. Retained for   backward compatibility with previously synced instruments.
+/// Trading mechanism of an instrument — how the two securities are exchanged and traded. Unlike `securityType` (which classifies the asset class), this focuses on the instrument's trading mechanism.  - `SPOT`: direct asset exchange, both balances change - `FUTURES`: fixed-expiry contract settled at maturity - `PERPETUAL`: perpetual contract with no expiry (funding rate) - `OPTION`: right to buy/sell at strike price - `CFD`: contract for difference, cash-settled - `CONTRACT`: **deprecated** — legacy umbrella for derivative contracts,   superseded by the more specific `FUTURES` / `PERPETUAL`. Retained for   backward compatibility with previously synced instruments.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum InstrumentType {
     #[serde(rename = "SPOT")]
     Spot,
+    #[serde(rename = "FUTURES")]
+    Futures,
+    #[serde(rename = "PERPETUAL")]
+    Perpetual,
+    #[serde(rename = "OPTION")]
+    Option,
+    #[serde(rename = "CFD")]
+    Cfd,
     #[serde(rename = "CONTRACT")]
     Contract,
 }
@@ -25,6 +33,10 @@ impl std::fmt::Display for InstrumentType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Spot => write!(f, "SPOT"),
+            Self::Futures => write!(f, "FUTURES"),
+            Self::Perpetual => write!(f, "PERPETUAL"),
+            Self::Option => write!(f, "OPTION"),
+            Self::Cfd => write!(f, "CFD"),
             Self::Contract => write!(f, "CONTRACT"),
         }
     }

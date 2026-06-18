@@ -33,6 +33,8 @@ pub enum SecurityType {
     Futures,
     #[serde(rename = "PERPETUAL")]
     Perpetual,
+    #[serde(rename = "CFD")]
+    Cfd,
 }
 
 impl std::fmt::Display for SecurityType {
@@ -47,6 +49,7 @@ impl std::fmt::Display for SecurityType {
             Self::Option => write!(f, "OPTION"),
             Self::Futures => write!(f, "FUTURES"),
             Self::Perpetual => write!(f, "PERPETUAL"),
+            Self::Cfd => write!(f, "CFD"),
         }
     }
 }
