@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bid_quantity** | Option<**String**> | Decimal value as string to preserve precision | [optional]
 **ask_price** | Option<**String**> | Decimal value as string to preserve precision | [optional]
 **ask_quantity** | Option<**String**> | Decimal value as string to preserve precision | [optional]
+**price_change_percent** | Option<**String**> | Decimal value as string to preserve precision | [optional]
 **timestamp** | **i64** | Unix timestamp in milliseconds | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
