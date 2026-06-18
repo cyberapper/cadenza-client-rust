@@ -40,6 +40,9 @@ pub struct Ticker {
     /// Decimal value as string to preserve precision
     #[serde(rename = "askQuantity", skip_serializing_if = "Option::is_none")]
     pub ask_quantity: Option<String>,
+    /// Decimal value as string to preserve precision
+    #[serde(rename = "priceChangePercent", skip_serializing_if = "Option::is_none")]
+    pub price_change_percent: Option<String>,
     /// Unix timestamp in milliseconds
     #[serde(rename = "timestamp")]
     pub timestamp: i64,
@@ -58,6 +61,7 @@ impl Ticker {
             bid_quantity: None,
             ask_price: None,
             ask_quantity: None,
+            price_change_percent: None,
             timestamp,
         }
     }
